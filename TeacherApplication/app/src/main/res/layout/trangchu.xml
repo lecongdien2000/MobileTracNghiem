@@ -7,144 +7,146 @@
     android:orientation="vertical"
     tools:context=".TrangChuActivity">
 
-    <LinearLayout
-        android:weightSum="6"
-        android:orientation="horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Spinner
-            android:layout_weight="2"
-            android:layout_marginTop="10dp"
             android:id="@+id/spinner"
-            android:layout_marginLeft="25dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:layout_alignParentTop="true"/>
 
-        <ImageButton
+        <Button
             android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="6dp"
-            android:layout_weight="4"
-            android:background="@null"
-            android:src="@drawable/add" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="20dp"
+            android:text="+"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:background="@drawable/circle" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:weightSum="5"
+    </RelativeLayout>
+
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnMonHocToan"
-            android:text="Toán"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnMonHocLy"
-            android:text="Lý"
-            android:layout_margin="3dp"
-            android:backgroundTint="#67EFE2"
-            android:textAllCaps="false"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnMonHocHoa"
-            android:text="Hoá"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnMonHocSinh"
-            android:text="Sinh"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnMonHocSu"
-            android:text="Sử"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
-    <LinearLayout
-        android:weightSum="4"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnMonHocDia"
-            android:text="Địa"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnMonHocAnh"
-            android:text="AV"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:backgroundTint="#67EFE2"
-            android:textAllCaps="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <!--        <Button-->
-        <!--            android:id="@+id/btnMonHocGDCD"-->
-        <!--            android:text="GDCD"-->
-        <!--            android:layout_weight="1"-->
-        <!--            android:textAllCaps="false"-->
-        <!--            android:backgroundTint="#67EFE2"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"/>-->
-        <Button
-            android:id="@+id/btnMonHocGDCD"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:backgroundTint="#67EFE2"
-            android:text="GD"
+            android:orientation="horizontal">
 
-            android:textAllCaps="false" />
-        <Button
-            android:id="@+id/btnMonHocTin"
-            android:text="Tin"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnMonHocToan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Toán"
+                android:textAllCaps="false" />
 
-        <Button
-            android:id="@+id/btnMonHocCN"
-            android:text="CN"
-            android:layout_margin="3dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:backgroundTint="#67EFE2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnMonHocLy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Lý"
+                android:textAllCaps="false" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnMonHocHoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Hoá"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocSinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Sinh"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocSu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Sử"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocDia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Địa"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocGDCD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="GD"
+
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocCN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="CN"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocTin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="Tin"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnMonHocAnh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:backgroundTint="#67EFE2"
+                android:text="AV"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <ListView
         android:id="@+id/list_dethi"

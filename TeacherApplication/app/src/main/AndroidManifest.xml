@@ -16,6 +16,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LDKetquaActivity"/>
+        <activity android:name=".LDLambaiActivity"/>
+        <activity android:name=".LDThongtinActivity"/>
+        <activity android:name=".RDDangthanhcongActivity"/>
+        <activity android:name=".RDDSCauhoiActivity"/>
+        <activity android:name=".RDThemcauhoiActivity"/>
+        <activity android:name=".RDThongtinActivity"/>
     </application>
 
 </manifest>
