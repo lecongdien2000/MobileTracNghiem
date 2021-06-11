@@ -1,4 +1,4 @@
-package com.example.teacherapplication;
+package com.example.teacherapplication.View;
 
 import android.app.Activity;
 import android.content.Intent;

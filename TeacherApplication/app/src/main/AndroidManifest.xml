@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TeacherApplication">
-        <activity android:name=".TrangChuActivity">
+        <activity android:name=".View.TrangChuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LDKetquaActivity"/>
-        <activity android:name=".LDLambaiActivity"/>
-        <activity android:name=".LDThongtinActivity"/>
-        <activity android:name=".RDDangthanhcongActivity"/>
-        <activity android:name=".RDDSCauhoiActivity"/>
-        <activity android:name=".RDThemcauhoiActivity"/>
-        <activity android:name=".RDThongtinActivity"/>
+        <activity android:name=".View.LDKetquaActivity"/>
+        <activity android:name=".View.LDLambaiActivity"/>
+        <activity android:name=".View.LDThongtinActivity"/>
+        <activity android:name=".View.RDDangthanhcongActivity"/>
+        <activity android:name=".View.RDDSCauhoiActivity"/>
+        <activity android:name=".View.RDThemcauhoiActivity"/>
+        <activity android:name=".View.RDThongtinActivity"/>
     </application>
 
 </manifest>

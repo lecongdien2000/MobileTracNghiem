@@ -1,9 +1,10 @@
-package com.example.teacherapplication;
+package com.example.teacherapplication.View;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import com.example.teacherapplication.*;
 
 public class RDDangthanhcongActivity extends Activity {
     @Override
@@ -11,4 +12,12 @@ public class RDDangthanhcongActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rade_dangthanhcong);
     }
+
+    /**
+     *
+     */
+    public void swtichGUI() {
+        // TODO implement here
+    }
+
 }
