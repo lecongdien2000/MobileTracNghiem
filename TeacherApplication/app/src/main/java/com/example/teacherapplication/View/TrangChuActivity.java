@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.teacherapplication.*;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class TrangChuActivity extends AppCompatActivity {
+public class TrangChuActivity extends AppCompatActivity implements View.OnClickListener {
     private int lopDaChon;
     private String monHocDachon;
     private int lopMacDinh;
@@ -16,10 +18,16 @@ public class TrangChuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
+        initView();
+    }
+
+    private void initView() {
+        Button addBtn = findViewById(R.id.trangchu_addBtn);
+        addBtn.setOnClickListener(this);
     }
 
     public void addExam() {
-        // TODO implement here
+        ActivitiesTransfer.sendMessage(this, RDThongtinActivity.class, new Bundle());
     }
 
     /**
@@ -77,5 +85,12 @@ public class TrangChuActivity extends AppCompatActivity {
     public String getId() {
         // TODO implement here
         return "";
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.trangchu_addBtn: addExam();
+        }
     }
 }

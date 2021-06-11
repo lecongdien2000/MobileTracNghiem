@@ -10,7 +10,9 @@ public class Lop {
     /**
      * Default constructor
      */
-    public Lop() {
+    public Lop(int lop, String label) {
+        this.lop = lop;
+        this.label = label;
     }
 
     /**

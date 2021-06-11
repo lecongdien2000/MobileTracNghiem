@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:weightSum="10"
-    tools:context=".TrangChuActivity">
+    tools:context=".View.TrangChuActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinnerLop"
+                android:id="@+id/rade_thongtin_spinnerLop"
                 android:layout_width="match_parent"
                 android:layout_height="74dp"
 
@@ -116,7 +116,7 @@
                 android:textStyle="bold" />
 
             <Spinner
-                android:id="@+id/spinnerMon"
+                android:id="@+id/rade_thongtin_spinnerMon"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
 

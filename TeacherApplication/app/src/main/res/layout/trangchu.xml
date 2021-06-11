@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TrangChuActivity">
+    tools:context=".View.TrangChuActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_alignParentTop="true"/>
 
         <Button
-            android:id="@+id/imageButton2"
+            android:id="@+id/trangchu_addBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="6dp"

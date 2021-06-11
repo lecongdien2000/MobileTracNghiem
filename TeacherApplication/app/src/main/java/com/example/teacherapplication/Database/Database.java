@@ -17,23 +17,41 @@ public class Database {
     /**
      * @return
      */
-    public List<Lop> getDSLop() {
-        // TODO implement here
-        return null;
+    public static List<Lop> getDSLop() {
+        List<Lop> dslop = new ArrayList<Lop>();
+        dslop.add(new Lop(1, "Lớp 1"));
+        dslop.add(new Lop(2, "Lớp 2"));
+        dslop.add(new Lop(3, "Lớp 3"));
+        dslop.add(new Lop(4, "Lớp 4"));
+        dslop.add(new Lop(5, "Lớp 5"));
+        dslop.add(new Lop(6, "Lớp 6"));
+        dslop.add(new Lop(7, "Lớp 7"));
+        dslop.add(new Lop(8, "Lớp 8"));
+        dslop.add(new Lop(9, "Lớp 9"));
+        dslop.add(new Lop(10, "Lớp 10"));
+        dslop.add(new Lop(11, "Lớp 11"));
+        dslop.add(new Lop(12, "Lớp 12"));
+        return dslop;
     }
 
     /**
      * @return
      */
-    public List<Mon> getDSMon() {
-        // TODO implement here
-        return null;
+    public static List<Mon> getDSMon() {
+        List<Mon> dsmon = new ArrayList<>();
+        dsmon.add(new Mon("Toán"));
+        dsmon.add(new Mon("Lý"));
+        dsmon.add(new Mon("Hóa"));
+        dsmon.add(new Mon("Sinh"));
+        dsmon.add(new Mon("Sử"));
+        dsmon.add(new Mon("Địa"));
+        return dsmon;
     }
 
     /**
      * @param dethi
      */
-    public void insertDeThi(DeThi dethi) {
+    public static void insertDeThi(DeThi dethi) {
         // TODO implement here
     }
 
@@ -42,7 +60,7 @@ public class Database {
      * @param lop 
      * @return
      */
-    public ArrayList<DeThi> getDeThi(String subject, int lop) {
+    public static ArrayList<DeThi> getDeThi(String subject, int lop) {
         // TODO implement here
         return null;
     }
@@ -50,7 +68,7 @@ public class Database {
     /**
      * @return
      */
-    public DeThi getExamInfor() {
+    public static DeThi getExamInfor() {
         // TODO implement here
         return null;
     }
@@ -59,7 +77,7 @@ public class Database {
      * @param idDe 
      * @return
      */
-    public DeThi getExamInfor(String idDe) {
+    public static DeThi getExamInfor(String idDe) {
         // TODO implement here
         return null;
     }
@@ -68,7 +86,7 @@ public class Database {
      * @param isAccepted 
      * @param id
      */
-    public void processExam(boolean isAccepted, String id) {
+    public static void processExam(boolean isAccepted, String id) {
         // TODO implement here
     }
 

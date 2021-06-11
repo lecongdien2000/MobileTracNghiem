@@ -10,7 +10,8 @@ public class Mon {
     /**
      * Default constructor
      */
-    public Mon() {
+    public Mon(String ten) {
+        this.ten = ten;
     }
 
     /**
