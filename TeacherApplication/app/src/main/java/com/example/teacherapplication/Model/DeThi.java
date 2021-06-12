@@ -1,11 +1,12 @@
 package com.example.teacherapplication.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class DeThi {
+public class DeThi implements Serializable {
 
     /**
      * Default constructor
@@ -13,35 +14,44 @@ public class DeThi {
     public DeThi() {
     }
 
-    /**
-     * 
-     */
-    public String tieuDe;
+    public DeThi(String tieuDe, String noiDung, Lop lop, Mon monHoc) {
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.dsTracNghiem = new ArrayList<TracNghiem>();
+        this.lop = lop;
+        this.monHoc = monHoc;
+        this.isAccepted = false;
+    }
 
     /**
      * 
      */
-    public String noiDung;
+    private String tieuDe;
 
     /**
      * 
      */
-    public List<TracNghiem> dsTracNghiem;
+    private String noiDung;
 
     /**
      * 
      */
-    public Lop lop;
+    private List<TracNghiem> dsTracNghiem;
 
     /**
      * 
      */
-    public Mon monHoc;
+    private Lop lop;
 
     /**
      * 
      */
-    public boolean isAccepted;
+    private Mon monHoc;
+
+    /**
+     * 
+     */
+    private boolean isAccepted;
 
 
 
@@ -50,8 +60,7 @@ public class DeThi {
      * @return
      */
     public List<TracNghiem> getDSTracNghiem() {
-        // TODO implement here
-        return null;
+        return dsTracNghiem;
     }
 
     /**

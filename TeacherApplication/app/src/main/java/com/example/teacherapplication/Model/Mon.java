@@ -1,11 +1,12 @@
 package com.example.teacherapplication.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Mon {
+public class Mon implements Serializable {
 
     /**
      * Default constructor

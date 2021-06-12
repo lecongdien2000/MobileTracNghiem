@@ -1,11 +1,12 @@
 package com.example.teacherapplication.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public abstract class TracNghiem {
+public abstract class TracNghiem implements Serializable {
 
     /**
      * Default constructor

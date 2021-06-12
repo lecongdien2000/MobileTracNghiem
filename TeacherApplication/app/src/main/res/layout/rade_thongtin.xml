@@ -31,6 +31,7 @@
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/rade_thongtin_tieudeEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -42,11 +43,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingTop="20dp"
-        android:text="Mô tả đợt thi"
+        android:text="Mô tả đề thi"
         android:textColor="#03A9F4"
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/rade_thongtin_motaEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -135,9 +137,9 @@
         android:weightSum="3">
 
         <Button
+            android:id="@+id/rade_thongtin_backBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_weight="1"
             android:backgroundTint="#00BCD4"
             android:text="Trở về"
@@ -150,9 +152,9 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/rade_thongtin_nextBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_weight="1"
             android:backgroundTint="#00BCD4"
             android:text="Tiếp tục"

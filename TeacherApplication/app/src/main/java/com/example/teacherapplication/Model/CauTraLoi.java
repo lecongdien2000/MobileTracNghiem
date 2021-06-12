@@ -1,11 +1,12 @@
 package com.example.teacherapplication.Model;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CauTraLoi {
+public class CauTraLoi implements Serializable {
 
     /**
      * Default constructor

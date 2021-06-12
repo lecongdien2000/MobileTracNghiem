@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import java.io.Serializable;
+
 public class ActivitiesTransfer {
     public static void sendMessage(Activity fromActivity, Class toActivityClass, Bundle bundle){
         Intent intent = new Intent(fromActivity, toActivityClass);
@@ -33,5 +35,8 @@ public class ActivitiesTransfer {
     }
     public static byte receiveByteMessage(Intent intent, String message_code){
         return intent.getExtras().getByte(message_code);
+    }
+    public static Serializable receiveSerializableMessage(Intent intent, String message_code){
+        return intent.getExtras().getSerializable(message_code);
     }
 }
