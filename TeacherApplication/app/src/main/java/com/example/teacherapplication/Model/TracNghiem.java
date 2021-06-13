@@ -43,4 +43,12 @@ public abstract class TracNghiem implements Serializable {
 
 
     public abstract void setCauTraLoi(int i, String traloi, boolean isTrue);
+
+    @Override
+    public String toString() {
+        return "TracNghiem{" +
+                "label='" + label + '\'' +
+                ", cauHoi='" + cauHoi + '\'' +
+                '}';
+    }
 }

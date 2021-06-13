@@ -70,4 +70,15 @@ public class DeThi implements Serializable {
         dsTracNghiem.add(tracnghiem);
     }
 
+    @Override
+    public String toString() {
+        return "DeThi{" +
+                "tieuDe='" + tieuDe + '\'' +
+                ", noiDung='" + noiDung + '\'' +
+                ", dsTracNghiem=" + dsTracNghiem +
+                ", lop=" + lop +
+                ", monHoc=" + monHoc +
+                ", isAccepted=" + isAccepted +
+                '}';
+    }
 }

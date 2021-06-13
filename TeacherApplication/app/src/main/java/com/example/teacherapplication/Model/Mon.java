@@ -26,5 +26,11 @@ public class Mon implements Serializable {
     public List<Lop> lopCoMonHoc;
 
 
-
+    @Override
+    public String toString() {
+        return "Mon{" +
+                "ten='" + ten + '\'' +
+                ", lopCoMonHoc=" + lopCoMonHoc +
+                '}';
+    }
 }

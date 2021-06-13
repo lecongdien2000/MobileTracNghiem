@@ -1,5 +1,7 @@
 package com.example.teacherapplication.Database;
 
+import android.util.Log;
+
 import java.util.*;
 import com.example.teacherapplication.Model.*;
 
@@ -52,7 +54,7 @@ public class Database {
      * @param dethi
      */
     public static void insertDeThi(DeThi dethi) {
-        // TODO implement here
+        Log.d("dethi", dethi.toString());
     }
 
     /**
@@ -89,5 +91,6 @@ public class Database {
     public static void processExam(boolean isAccepted, String id) {
         // TODO implement here
     }
+
 
 }

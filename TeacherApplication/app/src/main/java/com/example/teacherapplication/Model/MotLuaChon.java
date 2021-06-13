@@ -41,4 +41,10 @@ public class MotLuaChon extends TracNghiem {
         return dsTraLoi;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "MotLuaChon{" +
+                "dsTraLoi=" + dsTraLoi +
+                '}';
+    }
 }

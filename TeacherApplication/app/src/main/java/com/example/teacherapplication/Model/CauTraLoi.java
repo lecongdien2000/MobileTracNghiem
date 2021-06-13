@@ -39,4 +39,13 @@ public class CauTraLoi implements Serializable {
         this.isDapAn = isDapAn;
         this.noiDung = traloi;
     }
+
+    @Override
+    public String toString() {
+        return "CauTraLoi{" +
+                "stt=" + stt +
+                ", noiDung='" + noiDung + '\'' +
+                ", isDapAn=" + isDapAn +
+                '}';
+    }
 }

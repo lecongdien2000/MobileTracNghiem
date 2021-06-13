@@ -3491,9 +3491,9 @@
 												"$ref": "AAAAAAF58AOqfpJuk/w="
 											},
 											"font": "Arial;14;0",
-											"left": 454,
+											"left": 447,
 											"top": 967,
-											"width": 85.2744140625,
+											"width": 98.833984375,
 											"height": 14,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -3501,7 +3501,7 @@
 												"$ref": "AAAAAAF58AOqfpJvkI8="
 											},
 											"edgePosition": 1,
-											"text": "21 : finish"
+											"text": "21 : finishAction"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4036,9 +4036,9 @@
 												"$ref": "AAAAAAF58B85fZPbles="
 											},
 											"font": "Arial;14;0",
-											"left": 632,
+											"left": 630,
 											"top": 1251,
-											"width": 200.2177734375,
+											"width": 204.900390625,
 											"height": 14,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4046,7 +4046,7 @@
 												"$ref": "AAAAAAF58B85f5PcWm4="
 											},
 											"edgePosition": 1,
-											"text": "25 : setTracNghiem(tracnghiem)"
+											"text": "25 : addTracNghiem(tracnghiem)"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4374,9 +4374,9 @@
 												"$ref": "AAAAAAF58CSUGZQpNtg="
 											},
 											"font": "Arial;14;0",
-											"left": 334,
+											"left": 327,
 											"top": 1423,
-											"width": 85.2744140625,
+											"width": 98.833984375,
 											"height": 14,
 											"alpha": 1.5707963267948966,
 											"distance": 10,
@@ -4384,7 +4384,7 @@
 												"$ref": "AAAAAAF58CSUGpQq0gY="
 											},
 											"edgePosition": 1,
-											"text": "27 : finish"
+											"text": "27 : finishAction"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -4984,7 +4984,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF57lGZp4/Ei20="
 							},
-							"name": "finish",
+							"name": "finishAction",
 							"source": {
 								"$ref": "AAAAAAF5787C5I/4Mb8="
 							},
@@ -5042,7 +5042,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF57lGZp4/Ei20="
 							},
-							"name": "setTracNghiem",
+							"name": "addTracNghiem",
 							"source": {
 								"$ref": "AAAAAAF57/9I8pITIKU="
 							},
@@ -5072,7 +5072,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF57lGZp4/Ei20="
 							},
-							"name": "finish",
+							"name": "finishAction",
 							"source": {
 								"$ref": "AAAAAAF5787C5I/4Mb8="
 							},

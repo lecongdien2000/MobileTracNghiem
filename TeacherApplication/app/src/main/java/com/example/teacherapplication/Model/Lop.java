@@ -27,5 +27,11 @@ public class Lop implements Serializable {
     public String label;
 
 
-
+    @Override
+    public String toString() {
+        return "Lop{" +
+                "lop=" + lop +
+                ", label='" + label + '\'' +
+                '}';
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
+import com.example.teacherapplication.Database.Database;
 import com.example.teacherapplication.Model.DeThi;
 import com.example.teacherapplication.Model.TracNghiem;
 
@@ -21,7 +22,7 @@ public class RDDSCauhoiActivity extends Activity implements View.OnClickListener
     DeThi dethi;
     List<TracNghiem> tracNghiems = new ArrayList<>();
     ListView dscauhoiLV;
-    Button addBtn;
+    Button addBtn, finishBtn;
     final static String DETHI_MESSAGECODE = "dethi";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +35,9 @@ public class RDDSCauhoiActivity extends Activity implements View.OnClickListener
     private void initView() {
         dscauhoiLV = findViewById(R.id.rade_dscauhoi_list);
         addBtn = findViewById(R.id.rade_dscauhoi_addCauHoiBtn);
+        finishBtn = findViewById(R.id.rade_dscauhoi_finishBtn);
         addBtn.setOnClickListener(this);
+        finishBtn.setOnClickListener(this);
     }
 
 //    @Override
@@ -82,14 +85,16 @@ public class RDDSCauhoiActivity extends Activity implements View.OnClickListener
     /**
      *
      */
-    public void finish() {
-        // TODO implement here
+    public void finishAction() {
+        Database.insertDeThi(dethi);
+        ActivitiesTransfer.sendMessage(this, RDDangthanhcongActivity.class, new Bundle());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.rade_dscauhoi_addCauHoiBtn: addCauHoi(); break;
+            case R.id.rade_dscauhoi_finishBtn: finishAction(); break;
         }
     }
 }
