@@ -12,8 +12,13 @@ public class CauTraLoi implements Serializable {
      * Default constructor
      */
     public CauTraLoi() {
-    }
 
+    }
+    public CauTraLoi(int stt) {
+        this.stt = stt;
+        this.noiDung = "";
+        this.isDapAn = false;
+    }
     /**
      * 
      */
@@ -30,4 +35,8 @@ public class CauTraLoi implements Serializable {
     public boolean isDapAn;
 
 
+    public void setValue(String traloi, boolean isDapAn) {
+        this.isDapAn = isDapAn;
+        this.noiDung = traloi;
+    }
 }

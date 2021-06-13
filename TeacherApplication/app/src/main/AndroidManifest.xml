@@ -20,7 +20,8 @@
         <activity android:name=".View.LDThongtinActivity"/>
         <activity android:name=".View.RDDangthanhcongActivity"/>
         <activity android:name=".View.RDDSCauhoiActivity"/>
-        <activity android:name=".View.RDThemcauhoiActivity"/>
+        <activity android:name=".View.RDThemcauhoiActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".View.RDThongtinActivity"/>
     </application>
 

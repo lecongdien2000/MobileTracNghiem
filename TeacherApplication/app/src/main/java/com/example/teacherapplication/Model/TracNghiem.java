@@ -14,14 +14,12 @@ public abstract class TracNghiem implements Serializable {
     public TracNghiem() {
     }
 
-    /**
-     * 
-     */
-    public int stt;
+    public TracNghiem(String label, String cauHoi) {
+        this.label = label;
+        this.cauHoi = cauHoi;
+    }
 
-    /**
-     * 
-     */
+
     public String label;
 
     /**
@@ -29,22 +27,9 @@ public abstract class TracNghiem implements Serializable {
      */
     public String cauHoi;
 
-    /**
-     * 
-     */
-    public List<String> dsTraLoi;
 
-    /**
-     * 
-     */
-    public int dapAn;
-
-
-    /**
-     * @param cauhoi
-     */
     public void setCauhoi(String cauhoi) {
-        // TODO implement here
+        this.cauHoi = cauhoi;
     }
 
     /**
@@ -54,4 +39,8 @@ public abstract class TracNghiem implements Serializable {
         // TODO implement here
     }
 
+    public abstract void createBlankCauTraLois(int qty);
+
+
+    public abstract void setCauTraLoi(int i, String traloi, boolean isTrue);
 }

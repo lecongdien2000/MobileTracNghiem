@@ -10,18 +10,35 @@ public class MotLuaChon extends TracNghiem {
     /**
      * Default constructor
      */
-    public MotLuaChon() {
+    public MotLuaChon(String label) {
+        super(label, "");
+        dsTraLoi = new ArrayList<CauTraLoi>();
+    }
+
+    public MotLuaChon(String label, String cauhoi) {
+        super(label, cauhoi);
+        dsTraLoi = new ArrayList<CauTraLoi>();
+    }
+
+    @Override
+    public void createBlankCauTraLois(int qty) {
+        for(int stt = 1; stt <= qty; stt++)
+            dsTraLoi.add(new CauTraLoi(dsTraLoi.size() + stt));
+    }
+
+    @Override
+    public void setCauTraLoi(int i, String traloi, boolean isTrue) {
+        dsTraLoi.get(i).setValue(traloi, isTrue);
     }
 
     /**
      * 
      */
-    public List<CauTraLoi> dsTraLoi;
+    private List<CauTraLoi> dsTraLoi;
 
-    /**
-     * 
-     */
-    public int dapAn;
 
+    public List<CauTraLoi> getDsTraLoi() {
+        return dsTraLoi;
+    }
 
 }

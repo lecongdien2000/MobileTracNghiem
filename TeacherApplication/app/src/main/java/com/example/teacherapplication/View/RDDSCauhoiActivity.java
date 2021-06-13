@@ -1,24 +1,28 @@
 package com.example.teacherapplication.View;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
 import com.example.teacherapplication.Model.DeThi;
-import com.example.teacherapplication.Model.Mon;
 import com.example.teacherapplication.Model.TracNghiem;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.example.teacherapplication.*;
 
-public class RDDSCauhoiActivity extends Activity {
+public class RDDSCauhoiActivity extends Activity implements View.OnClickListener {
     DeThi dethi;
-    List<TracNghiem> tracNghiem = new ArrayList<>();
+    List<TracNghiem> tracNghiems = new ArrayList<>();
     ListView dscauhoiLV;
+    Button addBtn;
+    final static String DETHI_MESSAGECODE = "dethi";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,16 +33,26 @@ public class RDDSCauhoiActivity extends Activity {
 
     private void initView() {
         dscauhoiLV = findViewById(R.id.rade_dscauhoi_list);
+        addBtn = findViewById(R.id.rade_dscauhoi_addCauHoiBtn);
+        addBtn.setOnClickListener(this);
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        if (resultCode == RESULT_OK) {
+//            dethi = (DeThi) intent.getSerializableExtra(RDThongtinActivity.DETHI_MESSAGECODE);
+//            switchGUI(dethi);
+//            super.onActivityResult(requestCode, resultCode, intent);
+//        }
+//    }
 
     /**
      * @param dethi
      */
     public void switchGUI(DeThi dethi) {
         this.dethi = dethi;
-        tracNghiem = dethi.getDSTracNghiem();
-        loadDSTracNghiem(tracNghiem);
+        tracNghiems = dethi.getDSTracNghiem();
+        loadDSTracNghiem(tracNghiems);
     }
 
     /**
@@ -46,8 +60,9 @@ public class RDDSCauhoiActivity extends Activity {
      */
     public void loadDSTracNghiem(List<TracNghiem> dsTracNghiem) {
         List<String> dscauhoiStr = new ArrayList<>();
+        int stt = 0;
         for(TracNghiem tracnghiem: dsTracNghiem){
-            dscauhoiStr.add(tracnghiem.stt + "." + tracnghiem.cauHoi);
+            dscauhoiStr.add(++stt + "." + tracnghiem.cauHoi);
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
@@ -59,7 +74,9 @@ public class RDDSCauhoiActivity extends Activity {
      *
      */
     public void addCauHoi() {
-        // TODO implement here
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(DETHI_MESSAGECODE, dethi);
+        ActivitiesTransfer.sendMessage(this, RDThemcauhoiActivity.class, bundle);
     }
 
     /**
@@ -69,4 +86,10 @@ public class RDDSCauhoiActivity extends Activity {
         // TODO implement here
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rade_dscauhoi_addCauHoiBtn: addCauHoi(); break;
+        }
+    }
 }

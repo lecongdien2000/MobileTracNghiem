@@ -66,8 +66,8 @@ public class DeThi implements Serializable {
     /**
      * @param tracnghiem
      */
-    public void setTracNghiem(TracNghiem tracnghiem) {
-        // TODO implement here
+    public void addTracNghiem(TracNghiem tracnghiem) {
+        dsTracNghiem.add(tracnghiem);
     }
 
 }
