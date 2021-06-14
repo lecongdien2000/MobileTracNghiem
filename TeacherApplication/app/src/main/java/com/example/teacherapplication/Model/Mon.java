@@ -23,6 +23,10 @@ public class Mon {
      */
     public List<Lop> lopCoMonHoc;
 
+    public Mon(String ten){
+        this.ten = ten;
+    }
+
 
 
 }

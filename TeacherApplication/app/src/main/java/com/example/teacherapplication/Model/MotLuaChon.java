@@ -23,5 +23,11 @@ public class MotLuaChon extends TracNghiem {
      */
     public int dapAn;
 
+    public MotLuaChon(List<CauTraLoi> cauTraLois, int dapAn, String cauhoi, int stt) {
+        this.dapAn = dapAn;
+        this.dsTraLoi = cauTraLois;
+        this.cauHoi = cauhoi;
+        this.stt = stt;
+    }
 
 }

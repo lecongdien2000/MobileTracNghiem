@@ -24,7 +24,7 @@
         </TextView>
 
         <Button
-            android:id="@+id/sentBtn"
+            android:id="@+id/lamde_lambai_sentBtn"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -33,14 +33,15 @@
             android:text="Nộp bài"
             android:textSize="18dp"
             android:textColor="@color/white"
-            app:backgroundTint="@color/white">
+            app:backgroundTint="@color/white"
+            android:onClick="submit">
 
         </Button>
     </LinearLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/questionLV"
+        android:id="@+id/lamde_lambai_questionLV"
         tools:listitem="@layout/row_cauhoi"
         />
 

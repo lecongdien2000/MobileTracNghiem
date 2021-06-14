@@ -23,6 +23,10 @@ public class Lop {
      */
     public String label;
 
+    public Lop(int lop, String label){
+        this.lop = lop;
+        this.label = label;
+    }
 
 
 }

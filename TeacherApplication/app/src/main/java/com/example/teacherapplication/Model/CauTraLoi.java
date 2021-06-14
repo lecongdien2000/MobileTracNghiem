@@ -28,5 +28,11 @@ public class CauTraLoi {
      */
     public boolean isDapAn;
 
+    public  CauTraLoi(int stt, String noiDung, boolean isDapAn){
+        this.stt = stt;
+        this.noiDung = noiDung;
+        this.isDapAn = isDapAn;
+    }
+
 
 }

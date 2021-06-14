@@ -51,7 +51,7 @@ public class DeThi {
      */
     public List<TracNghiem> getDSTracNghiem() {
         // TODO implement here
-        return null;
+        return this.dsTracNghiem;
     }
 
     /**
@@ -60,5 +60,19 @@ public class DeThi {
     public void setTracNghiem(TracNghiem tracnghiem) {
         // TODO implement here
     }
+    public String getId(){
+        return "1";
+    }
 
+    public DeThi(List<TracNghiem> dsTracNghiem, String tieuDe){
+        this.dsTracNghiem = dsTracNghiem;
+         this.tieuDe = tieuDe;
+    }
+
+    public DeThi(String tieuDe, String noiDung, Lop lop, Mon mon){
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.lop = lop;
+        this.monHoc = mon;
+    }
 }
