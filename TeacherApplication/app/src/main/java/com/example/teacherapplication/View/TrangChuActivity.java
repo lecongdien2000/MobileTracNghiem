@@ -2,6 +2,7 @@ package com.example.teacherapplication.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.teacherapplication.*;
+import com.example.teacherapplication.Database.Database;
 import com.example.teacherapplication.Model.DeThi;
 import com.example.teacherapplication.Model.Lop;
 import com.example.teacherapplication.Model.Mon;
@@ -21,7 +22,7 @@ public class TrangChuActivity extends AppCompatActivity {
     private String monHocMacDinh;
 //
     ListView lv;
-    List<DeThi> dethi = new ArrayList<>();
+    List<DeThi> dethi;
     AdapterExam adapter;
 
 //
@@ -30,10 +31,7 @@ public class TrangChuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
 //
-        for (int i =0; i< 3; i++){
-            dethi.add(new DeThi("On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
-                    new Lop(10, "10"), new Mon("toan")));
-        }
+        dethi= Database.deThiExample();
         adapter = new AdapterExam(this, 0, dethi);
         lv = findViewById(R.id.trangchu_list_dethi);
         lv.setAdapter(adapter);
@@ -46,7 +44,7 @@ public class TrangChuActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bundle bd = new Bundle();
                 DeThi deClicked = (DeThi) lv.getItemAtPosition(i);
-                bd.putString("ID DE", deClicked.getId());
+                bd.putString("ID DE", deClicked.id);
                 ActivitiesTransfer.sendMessage(TrangChuActivity.this, LDThongtinActivity.class, bd);
             }
         });

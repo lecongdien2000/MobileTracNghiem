@@ -37,7 +37,7 @@ public class DeThi {
      * 
      */
     public Mon monHoc;
-
+    public String id;
     /**
      * 
      */
@@ -60,19 +60,17 @@ public class DeThi {
     public void setTracNghiem(TracNghiem tracnghiem) {
         // TODO implement here
     }
-    public String getId(){
-        return "1";
-    }
 
     public DeThi(List<TracNghiem> dsTracNghiem, String tieuDe){
         this.dsTracNghiem = dsTracNghiem;
          this.tieuDe = tieuDe;
     }
 
-    public DeThi(String tieuDe, String noiDung, Lop lop, Mon mon){
+    public DeThi(String id, String tieuDe, String noiDung, Lop lop, Mon mon){
         this.tieuDe = tieuDe;
         this.noiDung = noiDung;
         this.lop = lop;
         this.monHoc = mon;
+        this.id = id;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     android:layout_marginEnd="10dp"
-    tools:context=".TrangChuActivity"
+    tools:context=".View.LDThongtinActivity"
     android:background="@drawable/bg"
     tools:ignore="RtlCompat">
     <LinearLayout
@@ -42,13 +42,12 @@
                 android:textColor="#158EC5"
                 android:text="Tiêu đề"/>
             <TextView
-                android:id="@+id/textViewTitle"
+                android:id="@+id/lamde_thongtin_tieudeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_weight="1"
                 android:paddingTop="20dp"
-                android:layout_toEndOf="@+id/tv1"
                 android:layout_centerVertical="true"
                 android:text="Ôn tập lý 2018"
                 />
@@ -71,13 +70,12 @@
                 android:textColor="#158EC5"
                 android:text="Môn"/>
             <TextView
-                android:id="@+id/textViewTitle2"
+                android:id="@+id/lamde_thongtin_monTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_weight="1"
                 android:paddingTop="20dp"
-                android:layout_toEndOf="@+id/tv2"
                 android:layout_centerVertical="true"
                 android:text="Lý"
                 />
@@ -100,13 +98,12 @@
                 android:textColor="#158EC5"
                 android:text="Lớp"/>
             <TextView
-                android:id="@+id/textViewTitle3"
+                android:id="@+id/lamde_thongtin_lopTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_weight="1"
                 android:paddingTop="20dp"
-                android:layout_toEndOf="@+id/tv1"
                 android:layout_centerVertical="true"
                 android:text="10"
                 />
@@ -129,13 +126,12 @@
                 android:textColor="#158EC5"
                 android:text="Mô tả"/>
             <TextView
-                android:id="@+id/textViewTitle4"
+                android:id="@+id/lamde_thongtin_motaTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_weight="1"
                 android:paddingTop="20dp"
-                android:layout_toEndOf="@+id/tv1"
                 android:layout_centerVertical="true"
                 android:text="Đề ôn tập học kỳ 2 môn lý 2018"
                 />
