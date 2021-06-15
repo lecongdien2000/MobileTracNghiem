@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TrangChuActivity">
+    tools:context=".View.TrangChuActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/trangchu_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -20,7 +20,7 @@
             android:layout_alignParentTop="true"/>
 
         <Button
-            android:id="@+id/imageButton2"
+            android:id="@+id/trangchu_imageButton2"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="6dp"
@@ -46,112 +46,121 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnMonHocToan"
+                android:id="@+id/trangchu_btnMonHocToan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Toán"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocLy"
+                android:id="@+id/trangchu_btnMonHocLy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Lý"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocHoa"
+                android:id="@+id/trangchu_btnMonHocHoa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Hoá"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocSinh"
+                android:id="@+id/trangchu_btnMonHocSinh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Sinh"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocSu"
+                android:id="@+id/trangchu_btnMonHocSu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Sử"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocDia"
+                android:id="@+id/trangchu_btnMonHocDia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Địa"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocGDCD"
+                android:id="@+id/trangchu_btnMonHocGDCD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="GD"
-
+                android:onClick="setOnListennerForButton"
                 android:textAllCaps="false" />
 
             <Button
-                android:id="@+id/btnMonHocCN"
+                android:id="@+id/trangchu_btnMonHocCN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="CN"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocTin"
+                android:id="@+id/trangchu_btnMonHocTin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="Tin"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
 
             <Button
-                android:id="@+id/btnMonHocAnh"
+                android:id="@+id/trangchu_btnMonHocAnh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
                 android:backgroundTint="#67EFE2"
                 android:text="AV"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:onClick="setOnListennerForButton"/>
         </LinearLayout>
     </HorizontalScrollView>
 
     <ListView
-        android:id="@+id/list_dethi"
+        android:id="@+id/trangchu_list_dethi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_dethi_layout"/>
+        tools:listitem="@layout/list_dethi_layout" />
 
 </LinearLayout>

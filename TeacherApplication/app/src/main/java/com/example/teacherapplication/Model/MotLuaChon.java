@@ -21,7 +21,7 @@ public class MotLuaChon extends TracNghiem {
     /**
      * 
      */
-    public int dapAn;
+
 
 
 }

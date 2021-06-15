@@ -6,39 +6,8 @@ import java.util.*;
  * 
  */
 public abstract class TracNghiem {
-
-    /**
-     * Default constructor
-     */
-    public TracNghiem() {
-    }
-
-    /**
-     * 
-     */
-    public int stt;
-
-    /**
-     * 
-     */
-    public String label;
-
-    /**
-     * 
-     */
-    public String cauHoi;
-
-    /**
-     * 
-     */
-    public List<String> dsTraLoi;
-
-    /**
-     * 
-     */
-    public int dapAn;
-
-
+    protected String label;
+    protected String cauHoi;
     /**
      * @param cauhoi
      */
