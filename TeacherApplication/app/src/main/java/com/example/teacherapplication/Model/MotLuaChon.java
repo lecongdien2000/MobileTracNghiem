@@ -43,6 +43,7 @@ public class MotLuaChon extends TracNghiem {
         this.stt = stt;
     }
 
+
     public List<CauTraLoi> getDsTraLoi() {
         return dsTraLoi;
     }

@@ -11,19 +11,12 @@ public class Lop implements Serializable {
     /**
      * Default constructor
      */
-    public Lop(int lop, String label) {
-        this.lop = lop;
-        this.label = label;
+   
+    public Lop() {
     }
 
-    /**
-     * 
-     */
     public int lop;
 
-    /**
-     * 
-     */
     public String label;
 
     public Lop(int lop, String label){

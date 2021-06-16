@@ -7,11 +7,15 @@ import java.util.*;
  * 
  */
 public class DeThi implements Serializable {
+    private String tieuDe;
+    private String noiDung;
+    private List<TracNghiem> dsTracNghiem;
+    private Lop lop = new Lop();
+    private Mon monHoc  = new Mon();
+    public boolean isAccepted;
 
-    /**
-     * Default constructor
-     */
-    public DeThi() {
+    public String getTieuDe() {
+        return tieuDe;
     }
 
     public DeThi(String tieuDe, String noiDung, Lop lop, Mon monHoc) {
@@ -53,9 +57,26 @@ public class DeThi implements Serializable {
      * 
      */
     private boolean isAccepted;
+    public String getNoiDung() {
+        return noiDung;
+    }
 
+    public String getLop() {
+        return "Lớp " + lop.lop;
+    }
 
+    public Mon getMonHoc() {
+        return monHoc;
+    }
 
+    public DeThi() {
+    }
+    public DeThi(String tieuDe, String noiDung, int lop, String monHoc) {
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.lop.lop = lop;
+        this.monHoc.ten = monHoc;
+    }
 
     /**
      * @return

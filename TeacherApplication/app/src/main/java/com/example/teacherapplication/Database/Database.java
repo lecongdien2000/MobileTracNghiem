@@ -40,7 +40,7 @@ public class Database {
     /**
      * Default constructor
      */
-    public Database() {
+    public  Database() {
     }
 
     public static DeThi getFullExamInfor(String id) {
@@ -100,6 +100,7 @@ public class Database {
      */
     public static void insertDeThi(DeThi dethi) {
         Log.d("dethi", dethi.toString());
+        // TODO implement here
     }
 
     /**
@@ -108,8 +109,12 @@ public class Database {
      * @return
      */
     public static ArrayList<DeThi> getDeThi(String subject, int lop) {
-        // TODO implement here
-        return null;
+        ArrayList<DeThi> arrayList = new ArrayList<DeThi>();
+        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề mới nhất hiện nay",lop,subject));
+        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi giữa kì năm 2018",lop,subject));
+        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi giữa kì năm 2019",lop,subject));
+        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi cuối kì năm 2018",lop,subject));
+        return arrayList;
     }
 
     /**
