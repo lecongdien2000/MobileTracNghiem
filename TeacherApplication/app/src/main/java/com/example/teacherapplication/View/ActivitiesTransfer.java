@@ -7,6 +7,10 @@ import android.os.Bundle;
 import java.io.Serializable;
 
 public class ActivitiesTransfer {
+    final static String DETHI_MESSAGECODE = "dethi";
+    final static String TRACNGHIEM_MESSAGECODE = "tracnghiem";
+    final static String INDEX_MESSAGECODE = "index";
+    final static String ACTION = "ACTION_CODE";
     public static void sendMessage(Activity fromActivity, Class toActivityClass, Bundle bundle){
         Intent intent = new Intent(fromActivity, toActivityClass);
         intent.putExtras(bundle);

@@ -1,6 +1,8 @@
 package com.example.teacherapplication.View;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
@@ -23,13 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RDThongtinActivity extends Activity implements View.OnClickListener {
+    final static String EMPTY_ALERT_TITLE = "Lỗi nhập liệu";
+    final static String EMPTY_ALERT_CONTENT = "Bạn chưa điền đầy đủ thông tin!";
     List<Lop> dslop;
     List<Mon> dsmon;
     Spinner monSpn, lopSpn;
     Button backBtn, nextBtn;
     EditText tieudeEdt, motaEdt;
     DeThi dethi;
-    final static String DETHI_MESSAGECODE = "dethi";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,10 +94,10 @@ public class RDThongtinActivity extends Activity implements View.OnClickListener
      *
      */
     public void clickNext() {
-        finish();
         getValue();
+        if(checkEmpty(dethi)) return;
         Bundle bundle = new Bundle();
-        bundle.putSerializable(DETHI_MESSAGECODE, dethi);
+        bundle.putSerializable(ActivitiesTransfer.DETHI_MESSAGECODE, dethi);
         ActivitiesTransfer.sendMessage(this, RDDSCauhoiActivity.class, bundle);
     }
     private void clickBack() {
@@ -110,7 +113,31 @@ public class RDThongtinActivity extends Activity implements View.OnClickListener
         Mon mon = getMon((String) monSpn.getSelectedItem());
         dethi = new DeThi(tieude, mota, lop, mon);
     }
+    private boolean checkEmpty(DeThi dethi){
+        String tieude = dethi.getTieuDe();
+        String noidung = dethi.getNoiDung();
+        if(tieude == null || noidung == null) return true;
+        return checkEmpty(tieude) || checkEmpty(noidung);
+    }
 
+    private boolean checkEmpty(String data) {
+        if(data.isEmpty()){
+            displayAlert();
+            return true;
+        }
+        return false;
+    }
+    private void displayAlert() {
+
+        new AlertDialog.Builder(RDThongtinActivity.this)
+                .setTitle(EMPTY_ALERT_TITLE)
+                .setMessage(EMPTY_ALERT_CONTENT)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).show();
+    }
     @Override
     public void onClick(View v) {
         switch(v.getId()){

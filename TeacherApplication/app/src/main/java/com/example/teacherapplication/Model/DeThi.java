@@ -22,7 +22,7 @@ public class DeThi implements Serializable {
         this.monHoc = monHoc;
         this.isAccepted = false;
     }
-
+    private String id;
     /**
      * 
      */
@@ -80,5 +80,65 @@ public class DeThi implements Serializable {
                 ", monHoc=" + monHoc +
                 ", isAccepted=" + isAccepted +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTieuDe() {
+        return tieuDe;
+    }
+
+    public void setTieuDe(String tieuDe) {
+        this.tieuDe = tieuDe;
+    }
+
+    public String getNoiDung() {
+        return noiDung;
+    }
+
+    public void setNoiDung(String noiDung) {
+        this.noiDung = noiDung;
+    }
+
+    public List<TracNghiem> getDsTracNghiem() {
+        return dsTracNghiem;
+    }
+
+    public void setDsTracNghiem(List<TracNghiem> dsTracNghiem) {
+        this.dsTracNghiem = dsTracNghiem;
+    }
+
+    public Lop getLop() {
+        return lop;
+    }
+
+    public void setLop(Lop lop) {
+        this.lop = lop;
+    }
+
+    public Mon getMonHoc() {
+        return monHoc;
+    }
+
+    public void setMonHoc(Mon monHoc) {
+        this.monHoc = monHoc;
+    }
+
+    public boolean isAccepted() {
+        return isAccepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        isAccepted = accepted;
+    }
+
+    public void setTracNghiem(int pos, TracNghiem tracNghiem) {
+        dsTracNghiem.set(pos, tracNghiem);
     }
 }

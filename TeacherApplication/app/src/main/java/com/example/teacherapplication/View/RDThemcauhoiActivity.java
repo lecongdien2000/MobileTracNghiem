@@ -30,12 +30,26 @@ public class RDThemcauhoiActivity extends Activity implements View.OnClickListen
     ListView cautraloiLV;
     EditText cauhoiEdt;
     Button addBtn, completeBtn;
+    int pos = -1;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rade_themcauhoi);
         initView();
-        switchGUI((DeThi) ActivitiesTransfer.receiveSerializableMessage(getIntent(), RDDSCauhoiActivity.DETHI_MESSAGECODE));
+        int action_code = ActivitiesTransfer.receiveIntMessage(getIntent(), ActivitiesTransfer.ACTION);
+        DeThi dethi;
+        switch (action_code){
+            case R.id.rade_dscauhoi_addCauHoiBtn:
+                dethi = (DeThi) ActivitiesTransfer.receiveSerializableMessage(getIntent(), ActivitiesTransfer.DETHI_MESSAGECODE);
+                switchGUI(dethi);
+                break;
+            case R.id.rade_dscauhoi_list:
+                dethi = (DeThi) ActivitiesTransfer.receiveSerializableMessage(getIntent(), ActivitiesTransfer.DETHI_MESSAGECODE);
+                int pos = ActivitiesTransfer.receiveIntMessage(getIntent(), ActivitiesTransfer.INDEX_MESSAGECODE);
+                TracNghiem tracnghiem = (TracNghiem) ActivitiesTransfer.receiveSerializableMessage(getIntent(), ActivitiesTransfer.TRACNGHIEM_MESSAGECODE);
+                switchGUI(dethi, pos, tracnghiem);
+                break;
+        }
     }
 
     private void initView() {
@@ -56,10 +70,17 @@ public class RDThemcauhoiActivity extends Activity implements View.OnClickListen
         tracNghiem.createBlankCauTraLois(2);
         updateList();
     }
+    public void switchGUI(DeThi dethi, int pos, TracNghiem tracnghiem){
+        this.dethi = dethi;
+        this.tracNghiem = tracnghiem;
+        this.pos = pos;
+        updateList();
 
+    }
     private void updateList() {
         tracNghiemAdapter = new TracNghiemAdapter(this, ((MotLuaChon)tracNghiem).getDsTraLoi());
         cautraloiLV.setAdapter(tracNghiemAdapter);
+        cauhoiEdt.setText(tracNghiem.cauHoi);
     }
 
     /**
@@ -76,9 +97,10 @@ public class RDThemcauhoiActivity extends Activity implements View.OnClickListen
      */
     public void finishAction() {
         getValue();
-        dethi.addTracNghiem(tracNghiem);
+        if(pos==-1) dethi.addTracNghiem(tracNghiem);
+        else dethi.setTracNghiem(pos, tracNghiem);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(RDThongtinActivity.DETHI_MESSAGECODE, dethi);
+        bundle.putSerializable(ActivitiesTransfer.DETHI_MESSAGECODE, dethi);
         ActivitiesTransfer.sendMessage(this, RDDSCauhoiActivity.class, bundle);
         finish();
     }
