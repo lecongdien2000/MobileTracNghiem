@@ -34,6 +34,12 @@ public class CauTraLoi implements Serializable {
      */
     public boolean isDapAn;
 
+    public  CauTraLoi(int stt, String noiDung, boolean isDapAn){
+        this.stt = stt;
+        this.noiDung = noiDung;
+        this.isDapAn = isDapAn;
+    }
+
 
     public void setValue(String traloi, boolean isDapAn) {
         this.isDapAn = isDapAn;

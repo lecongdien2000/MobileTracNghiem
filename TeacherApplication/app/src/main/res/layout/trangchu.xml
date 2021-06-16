@@ -149,7 +149,7 @@
     </HorizontalScrollView>
 
     <ListView
-        android:id="@+id/list_dethi"
+        android:id="@+id/trangchu_list_dethi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/list_dethi_layout"/>

@@ -25,6 +25,10 @@ public class Mon implements Serializable {
      */
     public List<Lop> lopCoMonHoc;
 
+    public Mon(String ten){
+        this.ten = ten;
+    }
+
 
     @Override
     public String toString() {

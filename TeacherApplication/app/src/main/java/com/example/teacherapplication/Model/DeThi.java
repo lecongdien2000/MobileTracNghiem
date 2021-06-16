@@ -46,8 +46,9 @@ public class DeThi implements Serializable {
     /**
      * 
      */
-    private Mon monHoc;
 
+    public Mon monHoc;
+    public String id;
     /**
      * 
      */
@@ -60,7 +61,8 @@ public class DeThi implements Serializable {
      * @return
      */
     public List<TracNghiem> getDSTracNghiem() {
-        return dsTracNghiem;
+        // TODO implement here
+        return this.dsTracNghiem;
     }
 
     /**
@@ -140,5 +142,17 @@ public class DeThi implements Serializable {
 
     public void setTracNghiem(int pos, TracNghiem tracNghiem) {
         dsTracNghiem.set(pos, tracNghiem);
+
+    public DeThi(List<TracNghiem> dsTracNghiem, String tieuDe){
+        this.dsTracNghiem = dsTracNghiem;
+         this.tieuDe = tieuDe;
+    }
+
+    public DeThi(String id, String tieuDe, String noiDung, Lop lop, Mon mon){
+        this.tieuDe = tieuDe;
+        this.noiDung = noiDung;
+        this.lop = lop;
+        this.monHoc = mon;
+        this.id = id;
     }
 }

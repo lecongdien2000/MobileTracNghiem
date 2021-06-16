@@ -2,18 +2,30 @@ package com.example.teacherapplication.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.teacherapplication.*;
+import com.example.teacherapplication.Database.Database;
+import com.example.teacherapplication.Model.DeThi;
+import com.example.teacherapplication.Model.Lop;
+import com.example.teacherapplication.Model.Mon;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.AdapterView;
+import android.widget.ListView;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrangChuActivity extends AppCompatActivity implements View.OnClickListener {
     private int lopDaChon;
     private String monHocDachon;
     private int lopMacDinh;
     private String monHocMacDinh;
+//
+    ListView lv;
+    List<DeThi> dethi;
+    AdapterExam adapter;
+
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +36,25 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     private void initView() {
         Button addBtn = findViewById(R.id.trangchu_addBtn);
         addBtn.setOnClickListener(this);
+        dethi= Database.deThiExample();
+        adapter = new AdapterExam(this, 0, dethi);
+        lv = findViewById(R.id.trangchu_list_dethi);
+        lv.setAdapter(adapter);
+        handleLvAction();
     }
 
+    private void handleLvAction() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Bundle bd = new Bundle();
+                DeThi deClicked = (DeThi) lv.getItemAtPosition(i);
+                bd.putString("ID DE", deClicked.id);
+                ActivitiesTransfer.sendMessage(TrangChuActivity.this, LDThongtinActivity.class, bd);
+            }
+        });
+    }
+//
     public void addExam() {
         ActivitiesTransfer.sendMessage(this, RDThongtinActivity.class, new Bundle());
     }

@@ -26,6 +26,10 @@ public class Lop implements Serializable {
      */
     public String label;
 
+    public Lop(int lop, String label){
+        this.lop = lop;
+        this.label = label;
+    }
 
     @Override
     public String toString() {

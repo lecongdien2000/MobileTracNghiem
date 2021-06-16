@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/questionNameTV"
+        android:id="@+id/row_cauhoi_questionNameTV"
         android:textColor="#03A9F4"
         android:paddingLeft="10dp"
         android:text="Question name"
@@ -17,34 +17,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:id="@+id/radioGroup">
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Câu trả lời 1"
-            android:id="@+id/radioBtn1">
+        android:id="@+id/row_cauhoi_radioGroup">
+<!--        <RadioButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Câu trả lời 1"-->
+<!--            android:id="@+id/row_cauhoi_radioBtn1">-->
 
-        </RadioButton>
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Câu trả lời 2"
-            android:id="@+id/radioBtn2">
+<!--        </RadioButton>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Câu trả lời 2"-->
+<!--            android:id="@+id/row_cauhoi_radioBtn2">-->
 
-        </RadioButton>
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Câu trả lời 3"
-            android:id="@+id/radioBtn3">
+<!--        </RadioButton>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Câu trả lời 3"-->
+<!--            android:id="@+id/row_cauhoi_radioBtn3">-->
 
-        </RadioButton>
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Câu trả lời 4"
-            android:id="@+id/radioBtn4">
+<!--        </RadioButton>-->
+<!--        <RadioButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Câu trả lời 4"-->
+<!--            android:id="@+id/row_cauhoi_radioBtn4">-->
 
-        </RadioButton>
+<!--        </RadioButton>-->
     </RadioGroup>
 </LinearLayout>
