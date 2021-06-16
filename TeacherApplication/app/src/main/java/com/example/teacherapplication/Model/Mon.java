@@ -8,13 +8,13 @@ import java.util.*;
  */
 public class Mon implements Serializable {
 
+
+    public Mon(){
+
+    }
     /**
      * Default constructor
      */
-    public Mon(String ten) {
-        this.ten = ten;
-    }
-
     /**
      * 
      */

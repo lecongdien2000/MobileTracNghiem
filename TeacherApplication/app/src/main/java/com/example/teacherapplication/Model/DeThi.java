@@ -7,16 +7,14 @@ import java.util.*;
  * 
  */
 public class DeThi implements Serializable {
-    private String tieuDe;
-    private String noiDung;
-    private List<TracNghiem> dsTracNghiem;
-    private Lop lop = new Lop();
-    private Mon monHoc  = new Mon();
+    public String id;
+    public String tieuDe;
+    public String noiDung;
+    public List<TracNghiem> dsTracNghiem;
+    public Lop lop = new Lop();
+    public Mon monHoc  = new Mon();
     public boolean isAccepted;
 
-    public String getTieuDe() {
-        return tieuDe;
-    }
 
     public DeThi(String tieuDe, String noiDung, Lop lop, Mon monHoc) {
         this.tieuDe = tieuDe;
@@ -26,48 +24,18 @@ public class DeThi implements Serializable {
         this.monHoc = monHoc;
         this.isAccepted = false;
     }
-    private String id;
-    /**
-     * 
-     */
-    private String tieuDe;
-
-    /**
-     * 
-     */
-    private String noiDung;
-
-    /**
-     * 
-     */
-    private List<TracNghiem> dsTracNghiem;
-
-    /**
-     * 
-     */
-    private Lop lop;
-
     /**
      * 
      */
 
-    public Mon monHoc;
-    public String id;
     /**
      * 
      */
-    private boolean isAccepted;
-    public String getNoiDung() {
-        return noiDung;
-    }
 
     public String getLop() {
         return "Lớp " + lop.lop;
     }
 
-    public Mon getMonHoc() {
-        return monHoc;
-    }
 
     public DeThi() {
     }
@@ -137,9 +105,6 @@ public class DeThi implements Serializable {
         this.dsTracNghiem = dsTracNghiem;
     }
 
-    public Lop getLop() {
-        return lop;
-    }
 
     public void setLop(Lop lop) {
         this.lop = lop;
@@ -163,7 +128,7 @@ public class DeThi implements Serializable {
 
     public void setTracNghiem(int pos, TracNghiem tracNghiem) {
         dsTracNghiem.set(pos, tracNghiem);
-
+    }
     public DeThi(List<TracNghiem> dsTracNghiem, String tieuDe){
         this.dsTracNghiem = dsTracNghiem;
          this.tieuDe = tieuDe;

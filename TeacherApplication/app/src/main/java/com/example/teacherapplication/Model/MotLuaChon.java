@@ -34,7 +34,7 @@ public class MotLuaChon extends TracNghiem {
     /**
      * 
      */
-    private List<CauTraLoi> dsTraLoi;
+    public List<CauTraLoi> dsTraLoi;
 
     public MotLuaChon(List<CauTraLoi> cauTraLois, int dapAn, String cauhoi, int stt) {
         this.dapAn = dapAn;
