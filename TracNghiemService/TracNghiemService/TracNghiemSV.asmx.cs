@@ -48,8 +48,9 @@ namespace TracNghiemService
             while (reader.Read())
             {
                 Lop lop = new Lop();
-                lop.setLop(reader.GetInt32(1));
-                lop.setLabel(reader.GetString(2));
+                lop.setLop(reader.GetInt32("lop"));
+                lop.setLabel(reader.GetString("label"));
+                dslop.Add(lop);
             }
             reader.Close();
             return dslop;
