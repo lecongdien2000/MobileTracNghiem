@@ -10,7 +10,7 @@ import com.example.teacherapplication.Model.*;
  */
 public class Database {
 
-    public  static List<DeThi>    deThiExample(){
+    public  static List<DeThi> deThiExample(){
         List<DeThi> dethi = new ArrayList<>();
         dethi.add(new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
                 new Lop(10, "10"), new Mon("toan")));
