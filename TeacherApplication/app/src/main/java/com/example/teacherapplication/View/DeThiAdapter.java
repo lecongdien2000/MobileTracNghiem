@@ -53,9 +53,12 @@ public class DeThiAdapter extends BaseAdapter {
         convertView = inflater.inflate(R.layout.list_dethi_layout, null);
 
         DeThi deThi = arrayList.get(position);
-        TextView tendethi = convertView.findViewById(R.id.tendethi);
-        TextView mota = convertView.findViewById(R.id.tvmota);
-        TextView lophoc = convertView.findViewById(R.id.tvlophoc);
+//        TextView tendethi = convertView.findViewById(R.id.tendethi);
+//        TextView mota = convertView.findViewById(R.id.tvmota);
+//        TextView lophoc = convertView.findViewById(R.id.tvlophoc);
+        TextView tendethi = convertView.findViewById(R.id.list_dethi_tendethi);
+        TextView lophoc = convertView.findViewById(R.id.list_dethi_tvlophoc);
+        TextView mota = convertView.findViewById(R.id.list_dethi_tvmota);
 
         tendethi.setText(deThi.getTieuDe());
         mota.setText(deThi.getNoiDung());

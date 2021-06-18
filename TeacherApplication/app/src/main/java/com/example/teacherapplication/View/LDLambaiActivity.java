@@ -14,6 +14,7 @@ import com.example.teacherapplication.*;
 import com.example.teacherapplication.Database.Database;
 import com.example.teacherapplication.Model.CauTraLoi;
 import com.example.teacherapplication.Model.DeThi;
+import com.example.teacherapplication.Model.MotLuaChon;
 import com.example.teacherapplication.Model.TracNghiem;
 
 import java.util.ArrayList;
@@ -52,8 +53,14 @@ public class LDLambaiActivity extends Activity {
         int numOfTrueAnswer= 0;
         List<TracNghiem> tn =  de.dsTracNghiem;
         for (int i =0; i< tn.size(); i++){
-            if(tn.get(i).dapAn == answer.get(i))
-                numOfTrueAnswer+=1;
+//            if(tn.get(i).dapAn == answer.get(i))
+            MotLuaChon cauHoi = (MotLuaChon) tn.get(i);
+            for(int j = 0; j<cauHoi.dsTraLoi.size() ; j++){
+                if(cauHoi.dsTraLoi.get(j).isDapAn) {
+                    if (answer.get(i) == j)
+                        numOfTrueAnswer += 1;
+                }
+            }
         }
 
         return numOfTrueAnswer;

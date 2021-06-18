@@ -8,6 +8,7 @@ import com.example.teacherapplication.Model.Lop;
 import com.example.teacherapplication.Model.Mon;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class TrangChuActivity extends AppCompatActivity implements View.OnClickListener {
     ListView lv;
-    List<DeThi> dethi;
+    ArrayList<DeThi> dethi;
     AdapterExam adapter;
     private int lopDaChon = lopMacDinh;
     private String monHocDachon = monHocMacDinh;
@@ -32,7 +33,9 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
-        initView();
+//        initView();
+        lv = findViewById(R.id.trangchu_list_dethi);
+        handleLvAction();
         ArrayList<String> arrLop = new ArrayList<>();
         arrLop.add("Lớp 1");
         arrLop.add("Lớp 2");
@@ -50,16 +53,18 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
         setOnListennerForSpinner();
     }
 
-    private void initView() {
-        Button addBtn = findViewById(R.id.trangchu_addBtn);
-        addBtn.setOnClickListener(this);
-        dethi= Database.deThiExample();
-        adapter = new AdapterExam(this, 0, dethi);
-        lv = findViewById(R.id.trangchu_list_dethi);
-        lv.setAdapter(adapter);
-        handleLvAction();
-    }
+    // H
+//    private void initView() {
+//        Button addBtn = findViewById(R.id.trangchu_addBtn);
+//        addBtn.setOnClickListener(this);
+//        dethi= Database.deThiExample();
+//        adapter = new AdapterExam(this, 0, dethi);
+//        lv = findViewById(R.id.trangchu_list_dethi);
+//        lv.setAdapter(adapter);
+//        handleLvAction();
+//    }
 
+    // H
     private void handleLvAction() {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -120,10 +125,15 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
      */
     public void updateUI(String subject, int lop) {
         //create adapter DeThi
-        DeThiAdapter adapter = new DeThiAdapter(this,0);
-        adapter.setArray( Database.getDeThi(subject, lop));
-        lview = findViewById(R.id.trangchu_list_dethi);
-        lview.setAdapter(adapter);
+//        DeThiAdapter adapter = new DeThiAdapter(this,0);
+//        adapter.setArray( dethi);
+        dethi = Database.getDeThi(subject, lop);
+        AdapterExam adapter = new AdapterExam(this, 0);
+        adapter.setArray( dethi);
+
+//        lview = findViewById(R.id.trangchu_list_dethi);
+//        lview.setAdapter(adapter);
+        lv.setAdapter(adapter);
     }
 
     /**

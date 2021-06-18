@@ -23,15 +23,26 @@ import java.util.*;
  * 
  */
 public class AdapterExam extends ArrayAdapter<DeThi> {
-
+    private Context context;
+    private List<DeThi> arrayList;
+    private int layout;
     /**
      * Default constructor
      */
-//    public AdapterExam() {
-//    }
+
+    public AdapterExam(@NonNull Context context, int resource){
+        super(context, resource);
+        this.context = context;
+        this.layout = layout;
+        arrayList = new ArrayList<>();
+
+    }
 
     public AdapterExam(@NonNull Context context, int resource, @NonNull List<DeThi> objects) {
         super(context, resource, objects);
+        this.context = context;
+        this.layout = layout;
+        this.arrayList = objects;
     }
 
     @NonNull
@@ -68,8 +79,9 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
     /**
      * 
      */
-    public void setArray() {
+    public void setArray(ArrayList<DeThi> deThi) {
         // TODO implement here
+        this.arrayList = deThi;
     }
 
 }

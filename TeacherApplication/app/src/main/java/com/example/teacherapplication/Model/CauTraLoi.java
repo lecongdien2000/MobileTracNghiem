@@ -14,16 +14,9 @@ public class CauTraLoi implements Serializable {
     public CauTraLoi() {
 
     }
-    public CauTraLoi(int stt) {
-        this.stt = stt;
-        this.noiDung = "";
-        this.isDapAn = false;
-    }
     /**
      * 
      */
-    public int stt;
-
     /**
      * 
      */
@@ -34,8 +27,8 @@ public class CauTraLoi implements Serializable {
      */
     public boolean isDapAn;
 
-    public  CauTraLoi(int stt, String noiDung, boolean isDapAn){
-        this.stt = stt;
+    // H
+    public  CauTraLoi( String noiDung, boolean isDapAn){
         this.noiDung = noiDung;
         this.isDapAn = isDapAn;
     }
@@ -49,7 +42,6 @@ public class CauTraLoi implements Serializable {
     @Override
     public String toString() {
         return "CauTraLoi{" +
-                "stt=" + stt +
                 ", noiDung='" + noiDung + '\'' +
                 ", isDapAn=" + isDapAn +
                 '}';
