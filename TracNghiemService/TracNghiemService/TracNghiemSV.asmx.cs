@@ -10,7 +10,7 @@ namespace TracNghiemService
     /// <summary>
     /// Summary description for TracNghiemSV
     /// </summary>
-    [WebService(Namespace = "http://tracnghiemwebservice.org/")]
+    [WebService(Namespace = "http://tracnghiemwebservice.com/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
@@ -70,6 +70,7 @@ namespace TracNghiemService
                 lop.setLop(reader.GetInt32("lop"));
                 lop.setLabel(reader.GetString("label"));
             }
+            reader.Close();
             return lop;
         }
 
