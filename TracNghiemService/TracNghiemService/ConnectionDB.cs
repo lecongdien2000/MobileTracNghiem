@@ -17,13 +17,16 @@ namespace TracNghiemService
         private const string DATABASE = "tracnghiemdb";
         public static MySqlConnection getConnection()
         {
-            if (connection != null) return connection;
             try
             {
                 connection = new MySqlConnection("datasource=" + SERVER + ";port=" + PORT + ";username=" + USERNAME + ";password=" + PASSWORD + ";database=" + DATABASE);
                 connection.Open();
             }catch(Exception e){}
             return connection;
+        }
+        public static void close()
+        {
+            connection.Close();
         }
     }
 }

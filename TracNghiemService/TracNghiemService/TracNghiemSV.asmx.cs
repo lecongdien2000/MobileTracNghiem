@@ -53,24 +53,30 @@ namespace TracNghiemService
                 dslop.Add(lop);
             }
             reader.Close();
+            ConnectionDB.close();
             return dslop;
         }
 
         [WebMethod]
         public Lop getLop(int solop)
         {
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = ConnectionDB.getConnection();
-            cmd.CommandText = "SELECT * FROM Lop where lop = " + solop;
-            MySqlDataReader reader = cmd.ExecuteReader();
             Lop lop = null;
-            while (reader.Read())
+            using(MySqlConnection conn = ConnectionDB.getConnection())
             {
-                lop = new Lop();
-                lop.setLop(reader.GetInt32("lop"));
-                lop.setLabel(reader.GetString("label"));
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = ConnectionDB.getConnection();
+                cmd.CommandText = "SELECT * FROM Lop where lop = " + solop;
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lop = new Lop();
+                        lop.setLop(reader.GetInt32("lop"));
+                        lop.setLabel(reader.GetString("label"));
+                    }
+                }
             }
-            reader.Close();
+            
             return lop;
         }
 
