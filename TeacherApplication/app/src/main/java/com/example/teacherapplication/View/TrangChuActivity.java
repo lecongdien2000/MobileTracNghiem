@@ -25,16 +25,13 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     private String monHocDachon = monHocMacDinh;
     private static final  int lopMacDinh = 1;
     private static final String monHocMacDinh = "Toán";
-    private ArrayList<String> arrLop = new ArrayList<>();
     private Spinner spinner;
-    private ListView lview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
-//        initView();
-        lv = findViewById(R.id.trangchu_list_dethi);
+        initView();
         handleLvAction();
         ArrayList<String> arrLop = new ArrayList<>();
         arrLop.add("Lớp 1");
@@ -54,15 +51,11 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     }
 
     // H
-//    private void initView() {
-//        Button addBtn = findViewById(R.id.trangchu_addBtn);
-//        addBtn.setOnClickListener(this);
-//        dethi= Database.deThiExample();
-//        adapter = new AdapterExam(this, 0, dethi);
-//        lv = findViewById(R.id.trangchu_list_dethi);
-//        lv.setAdapter(adapter);
-//        handleLvAction();
-//    }
+    private void initView() {
+        Button addBtn = findViewById(R.id.trangchu_addBtn);
+        addBtn.setOnClickListener(this);
+        lv = findViewById(R.id.trangchu_list_dethi);
+    }
 
     // H
     private void handleLvAction() {
@@ -97,7 +90,6 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     public void setOnListennerForButton(View view) {
         Button btn = (Button)view;
         setAttMonHocDachon(btn.getText().toString());
-        System.out.println(btn.getText().toString());
         updateUI(monHocDachon,lopDaChon);
     }
 
@@ -123,15 +115,9 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
      *
      */
     public void updateUI(String subject, int lop) {
-        //create adapter DeThi
-//        DeThiAdapter adapter = new DeThiAdapter(this,0);
-//        adapter.setArray( dethi);
         dethi = Database.getDeThi(subject, lop);
         AdapterExam adapter = new AdapterExam(this, 0);
         adapter.setArray( dethi);
-
-//        lview = findViewById(R.id.trangchu_list_dethi);
-//        lview.setAdapter(adapter);
         lv.setAdapter(adapter);
     }
 

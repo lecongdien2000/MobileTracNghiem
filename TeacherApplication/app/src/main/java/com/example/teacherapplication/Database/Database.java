@@ -10,7 +10,7 @@ import com.example.teacherapplication.Model.*;
  */
 public class Database {
 
-    public  static List<DeThi> deThiExample(){
+    public  static List<DeThi> deThiExample() {
         List<DeThi> dethi = new ArrayList<>();
         dethi.add(new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
                 new Lop(10, "10"), new Mon("toan")));
@@ -18,15 +18,10 @@ public class Database {
                 new Lop(11, "11"), new Mon("toan")));
         dethi.add(new DeThi("003", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
                 new Lop(12, "12"), new Mon("toan")));
-
-    /**
-     * Default constructor
-     */
-    public  Database() {
+        return dethi;
     }
 
 
-//H
     public static DeThi getFullExamInfor(String id) {
         // use query
         List<CauTraLoi> dsCauTraLoi = new ArrayList<>();
