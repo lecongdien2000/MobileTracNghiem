@@ -23,15 +23,24 @@ import java.util.*;
  * 
  */
 public class AdapterExam extends ArrayAdapter<DeThi> {
-
+    private Context context;
+    private List<DeThi> arrayList;
+    private int layout;
     /**
      * Default constructor
      */
-//    public AdapterExam() {
-//    }
 
-    public AdapterExam(@NonNull Context context, int resource, @NonNull List<DeThi> objects) {
-        super(context, resource, objects);
+    public AdapterExam(@NonNull Context context, int resource){
+        super(context, resource);
+        this.context = context;
+        this.layout = layout;
+        arrayList = new ArrayList<>();
+
+    }
+
+    @Override
+    public int getCount() {
+        return arrayList.size();
     }
 
     @NonNull
@@ -40,7 +49,7 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
         if(convertView==null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_dethi_layout, parent, false);
         }
-        DeThi de = (DeThi) getItem(position);
+        DeThi de = arrayList.get(position);
         TextView tvTen = convertView.findViewById(R.id.list_dethi_tendethi);
         TextView tvLop = convertView.findViewById(R.id.list_dethi_tvlophoc);
         TextView tvMota = convertView.findViewById(R.id.list_dethi_tvmota);
@@ -68,8 +77,9 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
     /**
      * 
      */
-    public void setArray() {
+    public void setArray(ArrayList<DeThi> deThi) {
         // TODO implement here
+        this.arrayList = deThi;
     }
 
 }

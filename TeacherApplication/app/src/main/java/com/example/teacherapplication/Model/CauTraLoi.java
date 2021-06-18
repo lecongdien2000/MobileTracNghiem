@@ -14,16 +14,10 @@ public class CauTraLoi implements Serializable {
     public CauTraLoi() {
 
     }
-    public CauTraLoi(int stt) {
-        this.stt = stt;
-        this.noiDung = "";
-        this.isDapAn = false;
-    }
     /**
      * 
      */
     public int stt;
-
     /**
      * 
      */
@@ -34,12 +28,18 @@ public class CauTraLoi implements Serializable {
      */
     public boolean isDapAn;
 
-    public  CauTraLoi(int stt, String noiDung, boolean isDapAn){
+    // H
+    public  CauTraLoi( int stt, String noiDung, boolean isDapAn){
         this.stt = stt;
         this.noiDung = noiDung;
         this.isDapAn = isDapAn;
     }
 
+    public CauTraLoi(int stt) {
+        this.stt = stt;
+        this.noiDung = "";
+        this.isDapAn = false;
+    }
 
     public void setValue(String traloi, boolean isDapAn) {
         this.isDapAn = isDapAn;

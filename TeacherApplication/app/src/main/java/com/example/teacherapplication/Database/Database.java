@@ -19,46 +19,39 @@ public class Database {
         dethi.add(new DeThi("003", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
                 new Lop(12, "12"), new Mon("toan")));
 
-        List<CauTraLoi> dsCauTraLoi = new ArrayList<>();
-        for(int i =1; i<5; i++){
-            if (i!=1)
-                dsCauTraLoi.add(new CauTraLoi(i, ("" + i), false));
-            else
-                dsCauTraLoi.add(new CauTraLoi(i, ("" + i), true));
-        }
-        List<TracNghiem> dsCauHoi= new ArrayList<>();
-        for(int i =1; i<11; i++) {
-            dsCauHoi.add( new MotLuaChon(dsCauTraLoi, 0, "Chon dap an dung cho 9-8:", i));
-        }
-        dethi.get(0).dsTracNghiem = dsCauHoi;
-        dethi.get(1).dsTracNghiem = dsCauHoi;
-        dethi.get(2).dsTracNghiem = dsCauHoi;
-
-        return  dethi;
-    }
-
     /**
      * Default constructor
      */
     public  Database() {
     }
 
+
+//H
     public static DeThi getFullExamInfor(String id) {
-        List<DeThi> listDe = deThiExample();
-        for (int i =0; i<listDe.size(); i++){
-            if(listDe.get(i).id.equals(id))
-                return listDe.get(i);
+        // use query
+        List<CauTraLoi> dsCauTraLoi = new ArrayList<>();
+        for(int i =1; i<5; i++){
+            if (i!=1)
+                dsCauTraLoi.add(new CauTraLoi(i,("" + i), false));
+            else
+                dsCauTraLoi.add(new CauTraLoi(i,("" + i), true));
         }
-        return null;
+        List<TracNghiem> dsCauHoi= new ArrayList<>();
+        for(int i =1; i<11; i++) {
+            dsCauHoi.add( new MotLuaChon(dsCauTraLoi, "Chon dap an dung cho 9-8:"));
+        }
+        DeThi dt = new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
+                new Lop(10, "10"), new Mon("toan"));
+        dt.dsTracNghiem = dsCauHoi;
+        return dt;
+
     }
 
+//    H
     public static DeThi getAPartExamInfor(String id) {
-       List<DeThi> listDe = deThiExample();
-       for (int i =0; i<listDe.size(); i++){
-           if(listDe.get(i).id.equals(id))
-               return listDe.get(i);
-       }
-        return null;
+        // select de thi by id query
+      return  new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
+              new Lop(10, "10"), new Mon("toan"));
     }
 
     /**
