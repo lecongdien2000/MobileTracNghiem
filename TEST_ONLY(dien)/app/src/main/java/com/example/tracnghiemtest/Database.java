@@ -14,7 +14,7 @@ public class Database {
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
         Lop lop = new Lop();
-        request.addProperty("solop", 2);
+        request.addProperty("solop", solop);
         /*
          * Set the web service envelope
          *
@@ -40,6 +40,18 @@ public class Database {
         {
             e.printStackTrace();
         }
+        return lop;
+    }
+
+    public static Lop getLop2(int solop) {
+        WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_4);
+        webServiceConnection.setProperty("solop", solop);
+        webServiceConnection.setMapping("Lop", new Lop().getClass());
+        SoapObject response = webServiceConnection.getResponse();
+
+        Lop lop = new Lop();
+        lop.lop =  Integer.parseInt(response.getProperty(0).toString());
+        lop.label =  response.getProperty(1).toString();
         return lop;
     }
 }

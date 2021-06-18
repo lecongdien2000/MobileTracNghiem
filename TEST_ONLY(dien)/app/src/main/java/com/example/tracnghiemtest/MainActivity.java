@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         text = findViewById(R.id.text);
         button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
+            text.setText(Database.getLop2(2).toString());
             MyAsyncTask async = new MyAsyncTask();
             async.execute(mainActivity);
         });
@@ -37,7 +38,7 @@ class MyAsyncTask extends AsyncTask<MainActivity, Lop, Void>{
     protected Void doInBackground(MainActivity... values) {
         activity = values[0];
         int solop = activity.solop;
-        Lop lop = Database.getLop(solop);
+        Lop lop = Database.getLop2(solop);
         this.publishProgress(lop);
         return null;
     }
