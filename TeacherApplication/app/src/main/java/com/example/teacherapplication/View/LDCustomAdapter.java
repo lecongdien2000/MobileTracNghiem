@@ -56,7 +56,7 @@ public class LDCustomAdapter extends ArrayAdapter<TracNghiem> {
 
         MotLuaChon cauhoi = (MotLuaChon) getItem(position);
         TextView tv = row.findViewById(R.id.row_cauhoi_questionNameTV);
-        tv.setText(cauhoi.cauHoi);
+        tv.setText("Cau " + (position +1 ) + ": " + cauhoi.cauHoi);
         RadioGroup group = row.findViewById(R.id.row_cauhoi_radioGroup);
             List<CauTraLoi> dsCauTL = cauhoi.dsTraLoi;
             for (int i = 0; i < dsCauTL.size(); i++) {

@@ -71,6 +71,7 @@ public class LDLambaiActivity extends Activity {
         int score = mark(answers);
         Bundle bd = new Bundle();
         bd.putInt("SCORE", score);
+        bd.putString("TIEU DE", de.tieuDe);
         ActivitiesTransfer.sendMessage(this, LDKetquaActivity.class, bd);
     }
 }

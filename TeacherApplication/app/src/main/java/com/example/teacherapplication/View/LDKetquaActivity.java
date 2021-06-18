@@ -16,6 +16,8 @@ public class LDKetquaActivity extends Activity {
         setContentView(R.layout.lamde_ketqua);
         Intent it = getIntent();
 
+        TextView tieuDeTv = findViewById(R.id.lamde_ketqua_tvlophoc);
+        tieuDeTv.setText(ActivitiesTransfer.receiveStringMessage(it,"TIEU DE"));
         TextView tv = findViewById(R.id.lamde_ketqua_tvketqua);
         tv.setText("Ban sa lam dung " + ActivitiesTransfer.receiveIntMessage(it, "SCORE") + " cau");
     }

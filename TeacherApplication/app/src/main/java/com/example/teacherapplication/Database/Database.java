@@ -22,9 +22,9 @@ public class Database {
         List<CauTraLoi> dsCauTraLoi = new ArrayList<>();
         for(int i =1; i<5; i++){
             if (i!=1)
-                dsCauTraLoi.add(new CauTraLoi(("" + i), false));
+                dsCauTraLoi.add(new CauTraLoi(i,("" + i), false));
             else
-                dsCauTraLoi.add(new CauTraLoi(("" + i), true));
+                dsCauTraLoi.add(new CauTraLoi(i,("" + i), true));
         }
         List<TracNghiem> dsCauHoi= new ArrayList<>();
         for(int i =1; i<11; i++) {

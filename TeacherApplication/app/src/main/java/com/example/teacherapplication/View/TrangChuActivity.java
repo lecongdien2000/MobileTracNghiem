@@ -70,8 +70,7 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Bundle bd = new Bundle();
-                DeThi deClicked = (DeThi) lv.getItemAtPosition(i);
-                bd.putString("ID DE", deClicked.id);
+                bd.putString("ID DE", dethi.get(i).id);
                 ActivitiesTransfer.sendMessage(TrangChuActivity.this, LDThongtinActivity.class, bd);
             }
         });

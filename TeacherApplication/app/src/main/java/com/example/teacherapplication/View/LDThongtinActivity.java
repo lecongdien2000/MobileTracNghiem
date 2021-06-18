@@ -42,4 +42,9 @@ public class LDThongtinActivity extends Activity {
         bundle.putString("ID DE", currentDeThi.id);
         ActivitiesTransfer.sendMessage(LDThongtinActivity.this, LDLambaiActivity.class, bundle);
     }
+
+    public void backToMain(View view) {
+        Intent it = new Intent(this, TrangChuActivity.class);
+        startActivity(it);
+    }
 }

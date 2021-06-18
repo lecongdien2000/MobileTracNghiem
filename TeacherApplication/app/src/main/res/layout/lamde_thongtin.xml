@@ -144,12 +144,14 @@
             android:padding="15dp"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/lamde_thongtin_backBtn"
                 android:layout_weight="1"
                 android:background="@drawable/custom_button2"
                 android:textAllCaps="false"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Trở về"/>
+                android:text="Trở về"
+                android:onClick="backToMain"/>
             <Button
                 android:id="@+id/doExamBtn"
                 android:layout_weight="1"

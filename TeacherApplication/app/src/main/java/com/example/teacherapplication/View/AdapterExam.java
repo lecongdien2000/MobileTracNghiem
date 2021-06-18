@@ -38,11 +38,9 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
 
     }
 
-    public AdapterExam(@NonNull Context context, int resource, @NonNull List<DeThi> objects) {
-        super(context, resource, objects);
-        this.context = context;
-        this.layout = layout;
-        this.arrayList = objects;
+    @Override
+    public int getCount() {
+        return arrayList.size();
     }
 
     @NonNull
@@ -51,7 +49,7 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
         if(convertView==null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_dethi_layout, parent, false);
         }
-        DeThi de = (DeThi) getItem(position);
+        DeThi de = arrayList.get(position);
         TextView tvTen = convertView.findViewById(R.id.list_dethi_tendethi);
         TextView tvLop = convertView.findViewById(R.id.list_dethi_tvlophoc);
         TextView tvMota = convertView.findViewById(R.id.list_dethi_tvmota);

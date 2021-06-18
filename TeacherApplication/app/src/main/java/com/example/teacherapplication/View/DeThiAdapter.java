@@ -73,5 +73,4 @@ public class DeThiAdapter extends BaseAdapter {
     public void setArray(ArrayList<DeThi> deThi) {
         this.arrayList = deThi;
     }
-
 }
