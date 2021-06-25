@@ -8,6 +8,5 @@ namespace TracNghiemService
     public class Mon
     {
         public String ten;
-        public List<Lop> lopCoMonHoc;
     }
 }

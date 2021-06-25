@@ -14,5 +14,13 @@ namespace TracNghiemService
         public Lop lop = new Lop();
         public Mon monHoc = new Mon();
         public bool isAccepted;
+
+
+        public DeThi()
+        {
+
+        }
+
+
     }
 }

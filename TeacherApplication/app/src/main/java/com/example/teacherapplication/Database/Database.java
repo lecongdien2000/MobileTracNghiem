@@ -1,9 +1,14 @@
 package com.example.teacherapplication.Database;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
+
 import com.example.teacherapplication.Model.*;
+
+import org.ksoap2.serialization.SoapObject;
 
 /**
  * 
@@ -11,50 +16,80 @@ import com.example.teacherapplication.Model.*;
 public class Database {
 
     public static DeThi getFullExamInfor(String id) {
-        // use query
-        List<CauTraLoi> dsCauTraLoi = new ArrayList<>();
-        for(int i =1; i<5; i++){
-            if (i!=1)
-                dsCauTraLoi.add(new CauTraLoi(i,("" + i), false));
-            else
-                dsCauTraLoi.add(new CauTraLoi(i,("" + i), true));
-        }
-        List<TracNghiem> dsCauHoi= new ArrayList<>();
-        for(int i =1; i<11; i++) {
-            dsCauHoi.add( new MotLuaChon(dsCauTraLoi, "Chon dap an dung cho 9-8:"));
-        }
-        DeThi dt = new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
-                new Lop(10, "10"), new Mon("toan"));
-        dt.dsTracNghiem = dsCauHoi;
-        return dt;
+
+        return null;
 
     }
 
-//    H
+    //Get only id, tieuDe, noiDung, lop and mon
     public static DeThi getAPartExamInfor(String id) {
-        // select de thi by id query
-      return  new DeThi("001", "On tap kiem tra", "De thi on tap kiem tra cuoi ki moi nhat",
-              new Lop(10, "10"), new Mon("toan"));
+        try {
+            AsyncTask<Void, Void, DeThi> async = new AsyncTask<Void, Void, DeThi>() {
+                @Override
+                protected DeThi doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_2);
+
+                    //Set parameters of web service method
+                    webServiceConnection.setProperty("id", id);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("DeThi", new DeThi().getClass());
+                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    Lop lop = new Lop();
+                    lop.setProperty(0, response.getProperty(0));
+                    lop.setProperty(1, response.getProperty(1));
+
+                    return null;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
      * @return
      */
     public static List<Lop> getDSLop() {
-        List<Lop> dslop = new ArrayList<Lop>();
-        dslop.add(new Lop(1, "Lớp 1"));
-        dslop.add(new Lop(2, "Lớp 2"));
-        dslop.add(new Lop(3, "Lớp 3"));
-        dslop.add(new Lop(4, "Lớp 4"));
-        dslop.add(new Lop(5, "Lớp 5"));
-        dslop.add(new Lop(6, "Lớp 6"));
-        dslop.add(new Lop(7, "Lớp 7"));
-        dslop.add(new Lop(8, "Lớp 8"));
-        dslop.add(new Lop(9, "Lớp 9"));
-        dslop.add(new Lop(10, "Lớp 10"));
-        dslop.add(new Lop(11, "Lớp 11"));
-        dslop.add(new Lop(12, "Lớp 12"));
-        return dslop;
+        try {
+            AsyncTask<Void, Void, List<Lop>> async = new AsyncTask<Void, Void, List<Lop>>() {
+                @Override
+                protected List<Lop> doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_3);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    List<Lop> lops = new ArrayList<>();
+                    for(int i = 0; i < response.getPropertyCount(); i++){
+                        SoapObject responseElement = (SoapObject)response.getProperty(i);
+
+                        Lop lop = new Lop();
+                        lop.setProperty(0, responseElement.getProperty(0));
+                        lop.setProperty(1, responseElement.getProperty(1));
+
+                        lops.add(lop);
+                    }
+                 return lops;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -118,5 +153,40 @@ public class Database {
         // TODO implement here
     }
 
+
+
+
+    //Sample code
+    public static Lop getLop(int solop)  {
+        try {
+            AsyncTask<Void, Void, Lop> async = new AsyncTask<Void, Void, Lop>() {
+                @Override
+                protected Lop doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_4);
+
+                    //Set parameters of web service method
+                    webServiceConnection.setProperty("solop", solop);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    Lop lop = new Lop();
+                    lop.setProperty(0, response.getProperty(0));
+                    lop.setProperty(1, response.getProperty(1));
+
+                    return lop;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

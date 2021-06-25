@@ -1,0 +1,44 @@
+CREATE DATABASE tracnghiemdb;
+USE tracnghiemdb;
+
+CREATE TABLE LOP(
+    lop int  primary key,
+    label VARCHAR(10)
+    
+);
+CREATE TABLE MONHOC(
+    id VARCHAR(10) PRIMARY KEY,
+    name VARCHAR(10)
+    
+);
+CREATE TABLE DE(
+    id VARCHAR(10) PRIMARY KEY ,
+    name VARCHAR(30),
+		lop int,
+		FOREIGN KEY (lop) REFERENCES LOP(lop),
+		monHoc VARCHAR(10),
+		FOREIGN KEY (monHoc) REFERENCES MONHOC(id),
+		moTa VARCHAR(200),
+		isAccepted  BOOL
+    
+);
+
+CREATE TABLE CAUHOI(
+    stt VARCHAR(10),
+    idDe VARCHAR(10),
+		noiDung VARCHAR(200),
+		FOREIGN KEY (idDe) REFERENCES DE(id),
+		PRIMARY KEY(stt, idDe)
+    
+);
+CREATE TABLE DAPAN(
+    stt VARCHAR(10),
+		sttCauHoi VARCHAR(10),
+		FOREIGN KEY (sttCauHoi) REFERENCES CAUHOI(stt),
+		idDe VARCHAR(10),
+		FOREIGN KEY (idDe) REFERENCES DE(id),
+		noiDung VARCHAR(200),
+		isTrue BOOL,
+		PRIMARY KEY(stt, sttCauHoi, idDe)
+    
+);

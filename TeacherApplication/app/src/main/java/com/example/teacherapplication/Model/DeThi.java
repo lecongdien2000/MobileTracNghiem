@@ -1,12 +1,17 @@
 package com.example.teacherapplication.Model;
 
+import android.text.BoringLayout;
+
+import org.ksoap2.serialization.KvmSerializable;
+import org.ksoap2.serialization.PropertyInfo;
+
 import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class DeThi implements Serializable {
+public class DeThi implements Serializable, KvmSerializable {
     public String id;
     public String tieuDe;
     public String noiDung;
@@ -140,5 +145,75 @@ public class DeThi implements Serializable {
         this.lop = lop;
         this.monHoc = mon;
         this.id = id;
+    }
+
+    @Override
+    public Object getProperty(int i) {
+        switch (i){
+            case 0: return id;
+            case 1: return tieuDe;
+            case 2: return noiDung;
+            case 3: return dsTracNghiem;
+            case 4: return lop;
+            case 5: return monHoc;
+            case 6: return isAccepted;
+            default:break;
+        }
+        return null;
+    }
+
+    @Override
+    public int getPropertyCount() {
+        return 7;
+    }
+
+    @Override
+    public void setProperty(int i, Object o) {
+        switch (i){
+            case 0: id = o.toString(); break;
+            case 1: tieuDe = o.toString(); break;
+            case 2: noiDung = o.toString(); break;
+            case 3: dsTracNghiem = (List<TracNghiem>)o; break;
+            case 4: lop = (Lop)o; break;
+            case 5: monHoc = (Mon)o; break;
+            case 6: isAccepted = Boolean.parseBoolean(o.toString()); break;
+            default: break;
+        }
+    }
+
+    @Override
+    public void getPropertyInfo(int i, Hashtable properties, PropertyInfo info) {
+        switch(i)
+        {
+            case 0:
+                info.type = PropertyInfo.STRING_CLASS;
+                info.name = "id";
+                break;
+            case 1:
+                info.type = PropertyInfo.STRING_CLASS;
+                info.name = "tieuDe";
+                break;
+            case 2:
+                info.type = PropertyInfo.STRING_CLASS;
+                info.name = "noiDung";
+                break;
+            case 3:
+                info.type = PropertyInfo.OBJECT_CLASS;
+                info.name = "dsTracNghiem";
+                break;
+            case 4:
+                info.type = PropertyInfo.OBJECT_CLASS;
+                info.name = "lop";
+                break;
+            case 5:
+                info.type = PropertyInfo.OBJECT_CLASS;
+                info.name = "monHoc";
+                break;
+            case 6:
+                info.type = PropertyInfo.BOOLEAN_CLASS;
+                info.name = "isAccepted";
+                break;
+            default:break;
+        }
     }
 }

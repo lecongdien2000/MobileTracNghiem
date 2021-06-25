@@ -31,29 +31,75 @@ namespace TracNghiemService
         [WebMethod]
         public DeThi getAPartExamInfor(string id)
         {
-            //TODO
-            return null;
+            DeThi dethi = null;
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM de where id = '" + id + "'";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        dethi = new DeThi();
+                        dethi.id = reader.GetString("id");
+                        dethi.tieuDe = reader.GetString("name");
+                        dethi.noiDung = reader.GetString("moTa");
+                        dethi.lop = getLop(reader.GetInt32("lop"));
+                        dethi.monHoc = getMon(reader.GetInt32("monHoc"));
+                        dethi.isAccepted = reader.GetBoolean("isAccepted");
+                    }
+                }
+            }
+
+            return dethi;
         }
+
+        private Mon getMon(int id)
+        {
+            Mon mon = null;
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM monhoc where id = '" + id + "'";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        mon = new Mon();
+                        mon.ten = reader.GetString("name");
+                    }
+                }
+            }
+
+            return mon;
+        }
+
         /**
-        * 
-        */
+* 
+*/
         [WebMethod]
         public List<Lop> getDSLop()
         {
             List<Lop> dslop = new List<Lop>();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = ConnectionDB.getConnection();
-            cmd.CommandText = "SELECT * FROM Lop";
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using(MySqlConnection conn = ConnectionDB.getConnection())
             {
-                Lop lop = new Lop();
-                lop.setLop(reader.GetInt32("lop"));
-                lop.setLabel(reader.GetString("label"));
-                dslop.Add(lop);
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM Lop";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Lop lop = new Lop();
+                        lop.setLop(reader.GetInt32("lop"));
+                        lop.setLabel(reader.GetString("label"));
+                        dslop.Add(lop);
+                    }
+                }
             }
-            reader.Close();
-            ConnectionDB.close();
+            
             return dslop;
         }
 
@@ -64,7 +110,7 @@ namespace TracNghiemService
             using(MySqlConnection conn = ConnectionDB.getConnection())
             {
                 MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = ConnectionDB.getConnection();
+                cmd.Connection = conn;
                 cmd.CommandText = "SELECT * FROM Lop where lop = " + solop;
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
