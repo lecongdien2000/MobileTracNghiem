@@ -14,9 +14,9 @@ import org.ksoap2.serialization.SoapObject;
  * 
  */
 public class Database {
-
+    //Linh
     public static DeThi getFullExamInfor(String id) {
-
+    //TODO
         return null;
 
     }
@@ -70,7 +70,7 @@ public class Database {
                     WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_3);
 
                     //Determine mapping namespace (tag) and name in Java class
-                    webServiceConnection.setMapping("lop", new Lop().getClass());
+                    webServiceConnection.setMapping("Lop", new Lop().getClass());
 
                     //Start connect and get response
                     SoapObject response = webServiceConnection.getResponse();
@@ -96,64 +96,39 @@ public class Database {
         return null;
     }
 
-    /**
-     * @return
-     */
+
+    //Hong
     public static List<Mon> getDSMon() {
-        List<Mon> dsmon = new ArrayList<>();
-        dsmon.add(new Mon("Toán"));
-        dsmon.add(new Mon("Lý"));
-        dsmon.add(new Mon("Hóa"));
-        dsmon.add(new Mon("Sinh"));
-        dsmon.add(new Mon("Sử"));
-        dsmon.add(new Mon("Địa"));
-        return dsmon;
+        //TODO
+        return null;
     }
 
-    /**
-     * @param dethi
-     */
+    //Hong
     public static void insertDeThi(DeThi dethi) {
-        // TODO implement here
+        // TODO
     }
 
-    /**
-     * @param subject 
-     * @param lop 
-     * @return
-     */
+    //Hong
     public static ArrayList<DeThi> getDeThi(String subject, int lop) {
-        ArrayList<DeThi> arrayList = new ArrayList<DeThi>();
-        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề mới nhất hiện nay",lop,subject));
-        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi giữa kì năm 2018",lop,subject));
-        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi giữa kì năm 2019",lop,subject));
-        arrayList.add(new DeThi("Đề thi môn " + subject,"Đề thi cuối kì năm 2018",lop,subject));
-        return arrayList;
+        //TODO
+        return null;
     }
 
-    /**
-     * @return
-     */
+    //Linh
     public static DeThi getExamInfor() {
-        // TODO implement here
+        // TODO
         return null;
     }
 
-    /**
-     * @param idDe 
-     * @return
-     */
+    //Linh
     public static DeThi getExamInfor(String idDe) {
-        // TODO implement here
+        // TODO
         return null;
     }
 
-    /**
-     * @param isAccepted 
-     * @param id
-     */
+    //Linh
     public static void processExam(boolean isAccepted, String id) {
-        // TODO implement here
+        // TODO
     }
 
 

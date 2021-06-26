@@ -1,12 +1,14 @@
 package com.example.teacherapplication.Model;
 
+import org.ksoap2.serialization.KvmSerializable;
+
 import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public abstract class TracNghiem implements Serializable {
+public abstract class TracNghiem implements Serializable, KvmSerializable {
 
     /**
      * Default constructor

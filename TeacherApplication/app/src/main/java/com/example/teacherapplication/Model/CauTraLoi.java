@@ -1,12 +1,15 @@
 package com.example.teacherapplication.Model;
 
+import org.ksoap2.serialization.KvmSerializable;
+import org.ksoap2.serialization.PropertyInfo;
+
 import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CauTraLoi implements Serializable {
+public class CauTraLoi implements Serializable, KvmSerializable {
 
     /**
      * Default constructor
@@ -53,5 +56,52 @@ public class CauTraLoi implements Serializable {
                 ", noiDung='" + noiDung + '\'' +
                 ", isDapAn=" + isDapAn +
                 '}';
+    }
+
+
+    @Override
+    public Object getProperty(int i) {
+        switch (i){
+            case 0: return stt;
+            case 1: return noiDung;
+            case 2: return isDapAn;
+            default:break;
+        }
+        return null;
+    }
+
+    @Override
+    public int getPropertyCount() {
+        return 3;
+    }
+
+    @Override
+    public void setProperty(int i, Object o) {
+        switch (i){
+            case 0: stt = Integer.parseInt(o.toString()); break;
+            case 1: noiDung = o.toString(); break;
+            case 2: isDapAn = Boolean.parseBoolean(o.toString()); break;
+            default: break;
+        }
+    }
+
+    @Override
+    public void getPropertyInfo(int i, Hashtable properties, PropertyInfo info) {
+        switch(i)
+        {
+            case 0:
+                info.type = PropertyInfo.INTEGER_CLASS;
+                info.name = "stt";
+                break;
+            case 1:
+                info.type = PropertyInfo.STRING_CLASS;
+                info.name = "noiDung";
+                break;
+            case 2:
+                info.type = PropertyInfo.BOOLEAN_CLASS;
+                info.name = "isDapAn";
+                break;
+            default:break;
+        }
     }
 }
