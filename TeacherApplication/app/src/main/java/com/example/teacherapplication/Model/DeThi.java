@@ -4,6 +4,7 @@ import android.text.BoringLayout;
 
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
+import org.ksoap2.serialization.SoapObject;
 
 import java.io.Serializable;
 import java.util.*;
@@ -169,13 +170,25 @@ public class DeThi implements Serializable, KvmSerializable {
 
     @Override
     public void setProperty(int i, Object o) {
+        SoapObject responseElement = null;
         switch (i){
             case 0: id = o.toString(); break;
             case 1: tieuDe = o.toString(); break;
             case 2: noiDung = o.toString(); break;
             case 3: dsTracNghiem = (List<TracNghiem>)o; break;
-            case 4: lop = (Lop)o; break;
-            case 5: monHoc = (Mon)o; break;
+            case 4:
+                responseElement = (SoapObject)o;
+                Lop lop = new Lop();
+                lop.setProperty(0, responseElement.getProperty("lop"));
+                lop.setProperty(1, responseElement.getProperty("label"));
+                this.lop = lop;
+                break;
+            case 5:
+                responseElement = (SoapObject)o;
+                Mon mon = new Mon();
+                mon.setProperty(0, responseElement.getProperty("ten"));
+                this.monHoc = mon;
+                break;
             case 6: isAccepted = Boolean.parseBoolean(o.toString()); break;
             default: break;
         }

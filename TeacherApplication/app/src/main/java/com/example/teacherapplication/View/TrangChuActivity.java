@@ -7,6 +7,7 @@ import com.example.teacherapplication.Model.DeThi;
 import com.example.teacherapplication.Model.Lop;
 import com.example.teacherapplication.Model.Mon;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -31,6 +32,7 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trangchu);
+
         initView();
         handleLvAction();
         ArrayList<String> arrLop = new ArrayList<>();

@@ -35,15 +35,19 @@ public class Database {
 
                     //Determine mapping namespace (tag) and name in Java class
                     webServiceConnection.setMapping("DeThi", new DeThi().getClass());
-                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+                    webServiceConnection.setMapping("lop", new Lop().getClass());
+                    webServiceConnection.setMapping("monHoc", new Mon().getClass());
                     //Start connect and get response
                     SoapObject response = webServiceConnection.getResponse();
 
-                    Lop lop = new Lop();
-                    lop.setProperty(0, response.getProperty(0));
-                    lop.setProperty(1, response.getProperty(1));
-
-                    return null;
+                    DeThi deThi = new DeThi();
+                    deThi.setProperty(0, response.getProperty("id"));
+                    deThi.setProperty(1, response.getProperty("tieuDe"));
+                    deThi.setProperty(2, response.getProperty("noiDung"));
+                    deThi.setProperty(4, response.getProperty("lop"));
+                    deThi.setProperty(5, response.getProperty(("monHoc")));
+                    deThi.setProperty(6, response.getProperty("isAccepted"));
+                    return deThi;
                 }
             };
             async.execute();
@@ -66,7 +70,7 @@ public class Database {
                     WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_3);
 
                     //Determine mapping namespace (tag) and name in Java class
-                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+                    webServiceConnection.setMapping("lop", new Lop().getClass());
 
                     //Start connect and get response
                     SoapObject response = webServiceConnection.getResponse();
@@ -110,7 +114,6 @@ public class Database {
      * @param dethi
      */
     public static void insertDeThi(DeThi dethi) {
-        Log.d("dethi", dethi.toString());
         // TODO implement here
     }
 
