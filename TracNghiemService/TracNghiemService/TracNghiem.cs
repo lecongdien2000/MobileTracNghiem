@@ -5,9 +5,10 @@ using System.Web;
 
 namespace TracNghiemService
 {
-    public class TracNghiem
+    public abstract class TracNghiem
     {
         public String label;
         public String cauHoi;
+
     }
 }

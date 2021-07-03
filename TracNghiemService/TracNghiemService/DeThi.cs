@@ -10,7 +10,7 @@ namespace TracNghiemService
         public String id;
         public String tieuDe;
         public String noiDung;
-        public List<TracNghiem> dsTracNghiem;
+        public List<MotLuaChon> dsMotLuaChon;
         public Lop lop = new Lop();
         public Mon monHoc = new Mon();
         public bool isAccepted;
