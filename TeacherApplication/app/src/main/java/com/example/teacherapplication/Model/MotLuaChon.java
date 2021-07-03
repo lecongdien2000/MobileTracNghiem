@@ -23,6 +23,10 @@ public class MotLuaChon extends TracNghiem {
         dsTraLoi = new ArrayList<CauTraLoi>();
     }
 
+    public MotLuaChon() {
+
+    }
+
     @Override
     public void createBlankCauTraLois(int qty) {
         for(int stt = 1; stt <= qty; stt++)

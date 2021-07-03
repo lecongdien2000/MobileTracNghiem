@@ -1,7 +1,6 @@
 package com.example.teacherapplication.Database;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -96,21 +95,127 @@ public class Database {
         return null;
     }
 
-
     //Hong
     public static List<Mon> getDSMon() {
         //TODO
+        try {
+            AsyncTask<Void, Void, List<Mon>> async = new AsyncTask<Void, Void, List<Mon>>() {
+                @Override
+                protected List<Mon> doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_5);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("Mon", new Mon().getClass());
+
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    List<Mon> mons = new ArrayList<>();
+                    for(int i = 0; i < response.getPropertyCount(); i++){
+                        SoapObject responseElement = (SoapObject)response.getProperty(i);
+
+                        Mon mon = new Mon();
+                        mon.setProperty(0, responseElement.getProperty(0));
+                        mons.add(mon);
+                    }
+                    return mons;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     //Hong
     public static void insertDeThi(DeThi dethi) {
         // TODO
+        try {
+            AsyncTask<Void, Void, Void> async = new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_6);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("DeThi", new DeThi().getClass());
+
+                    //Set parameters of web service method
+                    webServiceConnection.setClassProperty("dethi", dethi, new DeThi().getClass());
+                    webServiceConnection.getResponse();
+                    return  null;
+                }
+            };
+            async.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //Hong
     public static ArrayList<DeThi> getDeThi(String subject, int lop) {
         //TODO
+        try {
+            AsyncTask<Void, Void, List<DeThi>> async = new AsyncTask<Void, Void, List<DeThi>>() {
+                @Override
+                protected List<DeThi> doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_5);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("DeThi", new DeThi().getClass());
+                    webServiceConnection.setMapping("MotLuaChon", new MotLuaChon().getClass());
+                    webServiceConnection.setMapping("Lop", new Lop().getClass());
+                    webServiceConnection.setMapping("Mon", new Mon().getClass());
+
+
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    List<DeThi> dethis = new ArrayList<>();
+                    for(int i = 0; i < response.getPropertyCount(); i++){
+                        SoapObject responseElement = (SoapObject)response.getProperty(i);
+
+                        DeThi dethi = new DeThi();
+                        dethi.setProperty(0, responseElement.getProperty(0));
+                        dethi.setProperty(1, responseElement.getProperty(1));
+                        dethi.setProperty(2, responseElement.getProperty(2));
+
+                        //create ds trac nghiem
+                        List<TracNghiem> dsTracNghiem = new ArrayList<>();
+                        SoapObject responeDSTracNghiem = (SoapObject) response.getProperty(3);
+                        for (int j =0; j< responeDSTracNghiem.getPropertyCount(); j++ ){
+                            SoapObject responeTracNghiem = (SoapObject) response.getProperty(j);
+                           TracNghiem tn = new MotLuaChon();
+                           tn.setProperty(0, responeTracNghiem.getProperty(0));
+                           tn.setProperty(1, responeTracNghiem.getProperty(1));
+                           dsTracNghiem.add(tn);
+                        }
+                        dethi.dsTracNghiem = dsTracNghiem;
+
+//                        get lop and mon from respone
+                        Lop lop = new Lop();
+                        Mon mon = new Mon();
+                        SoapObject responeLop = (SoapObject) responseElement.getProperty(4);
+                        SoapObject responeMon= (SoapObject) responseElement.getProperty(5);
+                        lop.setProperty(0, responeLop.getProperty(0));
+                        lop.setProperty(1, responeLop.getProperty(1));
+                        mon.setProperty(0, responeMon.getProperty(0));
+
+//            Add de thi vao danh sach
+                        dethis.add(dethi);
+                    }
+                    return dethis;
+                }
+            };
+            async.execute();
+            return (ArrayList<DeThi>) async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
