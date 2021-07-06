@@ -1,10 +1,15 @@
-package com.example.teacherapplication.Model;
+package com.example.tracnghiemtest;
 
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
+/**
+ * 
+ */
 public class MotLuaChon extends TracNghiem {
     public List<CauTraLoi> dsTraLoi;
 
@@ -32,6 +37,11 @@ public class MotLuaChon extends TracNghiem {
     public void setCauTraLoi(int i, String traloi, boolean isTrue) {
         dsTraLoi.get(i).setValue(traloi, isTrue);
     }
+
+    /**
+     * 
+     */
+
 
     public MotLuaChon(List<CauTraLoi> cauTraLois, String cauhoi) {
         this.dsTraLoi = cauTraLois;

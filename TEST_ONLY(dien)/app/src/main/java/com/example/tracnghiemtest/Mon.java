@@ -1,38 +1,38 @@
-package com.example.teacherapplication.Model;
+package com.example.tracnghiemtest;
 
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Hashtable;
 
-public class Lop implements Serializable, KvmSerializable {
+public class Mon implements Serializable, KvmSerializable {
 
-    public Lop() {
+
+    public Mon(){
+
     }
 
-    public int lop;
+    public String ten;
 
-    public String label;
 
-    public Lop(int lop, String label){
-        this.lop = lop;
-        this.label = label;
+    public Mon(String ten){
+        this.ten = ten;
     }
+
 
     @Override
     public String toString() {
-        return "Lop{" +
-                "lop=" + lop +
-                ", label='" + label + '\'' +
+        return "Mon{" +
+                "ten='" + ten + '\'' +
                 '}';
     }
+
 
     @Override
     public Object getProperty(int i) {
         switch (i){
-            case 0: return lop;
-            case 1: return label;
+            case 0: return ten;
             default:break;
         }
         return null;
@@ -40,14 +40,13 @@ public class Lop implements Serializable, KvmSerializable {
 
     @Override
     public int getPropertyCount() {
-        return 2;
+        return 1;
     }
 
     @Override
     public void setProperty(int i, Object o) {
         switch (i){
-            case 0: lop = Integer.parseInt(o.toString()); break;
-            case 1: label = o.toString(); break;
+            case 0: ten = o.toString(); break;
             default: break;
         }
     }
@@ -57,12 +56,8 @@ public class Lop implements Serializable, KvmSerializable {
         switch(i)
         {
             case 0:
-                info.type = PropertyInfo.INTEGER_CLASS;
-                info.name = "lop";
-                break;
-            case 1:
                 info.type = PropertyInfo.STRING_CLASS;
-                info.name = "label";
+                info.name = "ten";
                 break;
             default:break;
         }

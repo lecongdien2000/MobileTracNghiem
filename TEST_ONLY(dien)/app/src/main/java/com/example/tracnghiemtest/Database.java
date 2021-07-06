@@ -8,68 +8,59 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Database {
+    ///Linh
+    public static DeThi getFullExamInfor(String id) {
+        try {
+            AsyncTask<Void, Void, DeThi> async = new AsyncTask<Void, Void, DeThi>() {
+                @Override
+                protected DeThi doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_1);
 
-    public static Lop getLop(int solop){
-        String NAMESPACE = "http://tracnghiemwebservice.com/";
-        String METHOD_NAME = "getLop";
-        String SOAP_ACTION = NAMESPACE + METHOD_NAME;
-        String URL = "http://192.168.1.7/TracNghiem/TracNghiemSV.asmx?WSDL";
+                    //Set parameters of web service method
+                    webServiceConnection.setProperty("id", id);
 
-        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-        Lop lop = new Lop();
-        request.addProperty("solop", solop);
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("DeThi", new DeThi().getClass());
+                    webServiceConnection.setMapping("lop", new Lop().getClass());
+                    webServiceConnection.setMapping("monHoc", new Mon().getClass());
+                    webServiceConnection.setMapping("MotLuaChon", new MotLuaChon().getClass());
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
 
+                    DeThi deThi = new DeThi();
+                    deThi.setProperty(0, response.getProperty("id"));
+                    deThi.setProperty(1, response.getProperty("tieuDe"));
+                    deThi.setProperty(2, response.getProperty("noiDung"));
+                    List<TracNghiem> dsTracNghiem = new ArrayList<>();
+                    SoapObject listMlcRS = (SoapObject) response.getProperty(3);
+                    for(int i=0; i< listMlcRS.getPropertyCount() ; i++){
+                        MotLuaChon mlc = new MotLuaChon();
+                        SoapObject mlcRS = (SoapObject) listMlcRS.getProperty(i);
+                        mlc.setProperty(0, mlcRS.getProperty(0));
+                        mlc.setProperty(1, mlcRS.getProperty(1));
+                        mlc.setProperty(2, mlcRS.getProperty(2));
 
-        /*
-         * Set the web service envelope
-         *
-         * */
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-        envelope.dotNet = true;
-        envelope.setOutputSoapObject(request);
-
-        envelope.addMapping(NAMESPACE, "lop",new Lop().getClass());
-
-        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-        /*
-         * Call the web service and retrieve result ... how luvly <3
-         *
-         * */
-        try
-        {
-            androidHttpTransport.call(SOAP_ACTION, envelope);
-            SoapObject response = (SoapObject)envelope.getResponse();
-            lop.lop =  Integer.parseInt(response.getProperty(0).toString());
-            lop.label =  response.getProperty(1).toString();
-        }
-        catch(Exception e)
-        {
+                        dsTracNghiem.add(mlc);
+                    }
+                    deThi.dsTracNghiem = dsTracNghiem;
+                    deThi.setProperty(4, response.getProperty("lop"));
+                    deThi.setProperty(5, response.getProperty(("monHoc")));
+                    deThi.setProperty(6, response.getProperty("isAccepted"));
+                    return deThi;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
             e.printStackTrace();
         }
-        return lop;
+        return null;
     }
 
-    public static Lop getLop2(int solop) throws ExecutionException, InterruptedException {
-        AsyncTask<Void, Void, Lop> async = new AsyncTask<Void, Void, Lop>() {
-            @Override
-            protected Lop doInBackground(Void... values) {
-                WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_4);
-                webServiceConnection.setProperty("solop", solop);
-
-                webServiceConnection.setMapping("Lop", new Lop().getClass());
-                SoapObject response = webServiceConnection.getResponse();
-
-                Lop lop = new Lop();
-                lop.lop =  Integer.parseInt(response.getProperty(0).toString());
-                lop.label =  response.getProperty(1).toString();
-
-                return lop;
-            }
-        };
-        async.execute();
-        return async.get();
-    }
 }

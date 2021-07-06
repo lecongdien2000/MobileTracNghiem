@@ -1,13 +1,13 @@
-package com.example.teacherapplication.Model;
-
-import android.text.BoringLayout;
+package com.example.tracnghiemtest;
 
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 public class DeThi implements Serializable, KvmSerializable {
     public String id;
@@ -27,6 +27,7 @@ public class DeThi implements Serializable, KvmSerializable {
         this.monHoc = monHoc;
         this.isAccepted = false;
     }
+
 
     public String getLop() {
         return "Lớp " + lop.lop;

@@ -1,10 +1,11 @@
-package com.example.teacherapplication.Model;
+package com.example.tracnghiemtest;
 
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Hashtable;
+
 
 public class CauTraLoi implements Serializable, KvmSerializable {
 
@@ -18,7 +19,8 @@ public class CauTraLoi implements Serializable, KvmSerializable {
 
     public boolean isDapAn;
 
-    public  CauTraLoi( int stt, String noiDung, boolean isDapAn){
+    // H
+    public CauTraLoi(int stt, String noiDung, boolean isDapAn){
         this.stt = stt;
         this.noiDung = noiDung;
         this.isDapAn = isDapAn;

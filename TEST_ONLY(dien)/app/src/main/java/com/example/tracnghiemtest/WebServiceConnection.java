@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class WebServiceConnection {
     static String NAMESPACE = "http://tracnghiemwebservice.com/";
-    static String URL = "http://192.168.1.7/TracNghiem/TracNghiemSV.asmx?WSDL";
+    static String URL = "http://192.168.1.10/TracNghiemService/TracNghiemSV.asmx?WSDL";
     String METHOD_NAME = null;
     String SOAP_ACTION = null;
 

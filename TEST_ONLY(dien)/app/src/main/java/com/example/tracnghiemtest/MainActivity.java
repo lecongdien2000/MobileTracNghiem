@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
             try {
-                text.setText(Database.getLop2(2).toString());
+                text.setText(Database.getFullExamInfor("de01").toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }

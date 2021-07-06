@@ -6,27 +6,14 @@ import org.ksoap2.serialization.PropertyInfo;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
 public class Mon implements Serializable, KvmSerializable {
 
 
     public Mon(){
 
     }
-    /**
-     * Default constructor
-     */
-    /**
-     * 
-     */
+
     public String ten;
-
-    /**
-     * 
-     */
-
 
     public Mon(String ten){
         this.ten = ten;
