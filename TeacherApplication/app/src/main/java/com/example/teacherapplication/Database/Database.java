@@ -144,13 +144,19 @@ public class Database {
                     webServiceConnection.setProperty("idDe", dethi.id );
                     webServiceConnection.setProperty("tenDe", dethi.tieuDe);
                     webServiceConnection.setProperty("lop", dethi.lop.lop);
-                    webServiceConnection.setProperty("maMonHoc", dethi.monHoc.ten);
+                    String maMH = "";
+                    switch (dethi.monHoc.ten){
+                        case "Toán" : maMH = "mh01"; break;
+                        case "Lý" : maMH = "mh02"; break;
+                        case "Hóa" : maMH = "mh03"; break;
+                        case "Sinh" : maMH = "mh04"; break;
+                        case "Sử" : maMH = "mh05"; break;
+                    }
+                    webServiceConnection.setProperty("maMonHoc", maMH);
                     webServiceConnection.setProperty("noiDung", dethi.noiDung );
                     webServiceConnection.setProperty("isAccept", dethi.isAccepted);
 
                     SoapObject respone = webServiceConnection.getResponse();
-                    if ((boolean) respone.getProperty(0)) {
-
                         // INSERT CAUHOI OF DETHI
                         for (int i = 0; i < dethi.dsTracNghiem.size(); i++) {
                             MotLuaChon mlc = (MotLuaChon) dethi.dsTracNghiem.get(i);
@@ -162,7 +168,6 @@ public class Database {
                             webServiceConnection.setProperty("noiDung", mlc.cauHoi);
 
                             respone = webServiceConnection.getResponse();
-                            if ((boolean) respone.getProperty(0)) {
                                 // INSERT DAPAN OF CAU HOI
                                 for (int j = 0; j < mlc.dsTraLoi.size(); j++) {
                                     CauTraLoi ctl = mlc.dsTraLoi.get(j);
@@ -175,9 +180,7 @@ public class Database {
 
                                     insertDapAnWS.getResponse();
                                 }
-                            }
                         }
-                    }
                     return  null;
                 }
             };
@@ -195,7 +198,10 @@ public class Database {
                 @Override
                 protected List<DeThi> doInBackground(Void... values) {
                     //Create web service connection and pass a method in MethodNamesTable
-                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_5);
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_7);
+
+                    webServiceConnection.setProperty("subject", subject);
+                    webServiceConnection.setProperty("lop", lop);
 
                     //Determine mapping namespace (tag) and name in Java class
                     webServiceConnection.setMapping("DeThi", new DeThi().getClass());
@@ -207,35 +213,22 @@ public class Database {
                     //Start connect and get response
                     SoapObject response = webServiceConnection.getResponse();
 
+                    // get Dethis from respone
                     List<DeThi> dethis = new ArrayList<>();
                     for(int i = 0; i < response.getPropertyCount(); i++){
+
                         SoapObject responseElement = (SoapObject)response.getProperty(i);
 
                         DeThi dethi = new DeThi();
                         dethi.setProperty(0, responseElement.getProperty(0));
                         dethi.setProperty(1, responseElement.getProperty(1));
                         dethi.setProperty(2, responseElement.getProperty(2));
-
-                        //create ds trac nghiem
-                        List<TracNghiem> dsTracNghiem = new ArrayList<>();
-                        SoapObject responeDSTracNghiem = (SoapObject) response.getProperty(3);
-                        for (int j =0; j< responeDSTracNghiem.getPropertyCount(); j++ ){
-                            SoapObject responeTracNghiem = (SoapObject) response.getProperty(j);
-                           TracNghiem tn = new MotLuaChon();
-                           tn.setProperty(0, responeTracNghiem.getProperty(0));
-                           tn.setProperty(1, responeTracNghiem.getProperty(1));
-                           dsTracNghiem.add(tn);
-                        }
-                        dethi.dsTracNghiem = dsTracNghiem;
-
-//                        get lop and mon from respone
+                        SoapObject lopRSp = (SoapObject) responseElement.getProperty(3);
                         Lop lop = new Lop();
-                        Mon mon = new Mon();
-                        SoapObject responeLop = (SoapObject) responseElement.getProperty(4);
-                        SoapObject responeMon= (SoapObject) responseElement.getProperty(5);
-                        lop.setProperty(0, responeLop.getProperty(0));
-                        lop.setProperty(1, responeLop.getProperty(1));
-                        mon.setProperty(0, responeMon.getProperty(0));
+                        lop.setProperty(0, lopRSp.getProperty("lop"));
+                        dethi.lop = lop;
+                        dethi.setProperty(5, responseElement.getProperty(4));
+                        dethi.setProperty(6, responseElement.getProperty(5));
 
 //            Add de thi vao danh sach
                         dethis.add(dethi);
