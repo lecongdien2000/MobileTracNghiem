@@ -18,7 +18,7 @@ namespace TracNghiemService
     public class TracNghiemSV : System.Web.Services.WebService
     {
 
-        //lấy luôn cả ds trắc nghiệm luôn cua de da duoc duyet 
+        //lấy luôn cả ds trắc nghiệm luôn cua de da duoc duyet _ 1
         [WebMethod]
         public DeThi getFullExamInfor(string id)
         {
@@ -51,7 +51,7 @@ namespace TracNghiemService
             else
                 return deThi;
         }
-        //ok
+        //ok-bỏ
         [WebMethod]
         private List<CauTraLoi> getDSDapAnCuaMotCauHoi(string sttCauHoi, string idDe)
         {
@@ -78,7 +78,7 @@ namespace TracNghiemService
 
 
         /**
-        * ok (lay de theo ma de và de do phai duoc duyet ròi)
+        * ok (lay de theo ma de và de do phai duoc duyet ròi) _ 2
         */
         [WebMethod]
         public DeThi getAPartExamInfor(string id)
@@ -107,7 +107,83 @@ namespace TracNghiemService
             return dethi;
         }
 
-        //insert bảng đề 
+        /**
+* ok _ 3
+*/
+        [WebMethod]
+        public List<Lop> getDSLop()
+        {
+            List<Lop> dslop = new List<Lop>();
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM Lop";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Lop lop = new Lop();
+                        lop.setLop(reader.GetInt32("lop"));
+                        lop.setLabel(reader.GetString("label"));
+                        dslop.Add(lop);
+                    }
+                }
+            }
+
+            return dslop;
+        }
+
+        //4
+        [WebMethod]
+        public Lop getLop(int solop)
+        {
+            Lop lop = null;
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM Lop where lop = " + solop;
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        lop = new Lop();
+                        lop.setLop(reader.GetInt32("lop"));
+                        lop.setLabel(reader.GetString("label"));
+                    }
+                }
+            }
+
+            return lop;
+        }
+
+        /**
+        *5 
+        */
+        [WebMethod]
+        public List<Mon> getDSMon()
+        {
+            List<Mon> dsmon = new List<Mon>();
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM monhoc";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Mon mon = new Mon();
+                        mon.ten = reader.GetString("name");
+                        dsmon.Add(mon);
+                    }
+                }
+            }
+            return dsmon;
+        }
+
+        //insert bảng đề _ 6
         [WebMethod]
         public bool insertdataDeThi(string idDe, string tenDe, int lop, string maMonHoc, string noiDung, bool isAccept)
         {
@@ -139,8 +215,45 @@ namespace TracNghiemService
             return result;
         }
 
-        //inserr bang cau hoi
+        /**
+         * @return(lay de đã duyet theo mon va lop da chon) _ 7
+         */
         [WebMethod]
+        public List<DeThi> getDeThi(string subject, int lop)
+        {
+            List<DeThi> arrayList = new List<DeThi>();
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "select * from de inner join monhoc on de.monHoc = monhoc.id where monhoc.name like '" + subject + "' and de.lop = " + lop + " and de.isAccepted = true";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DeThi dethi = new DeThi();
+                        dethi.id = reader.GetString(0);
+                        dethi.tieuDe = reader.GetString(1);
+                        dethi.lop.setLop(reader.GetInt32(2));
+                        dethi.noiDung = reader.GetString(4);
+                        dethi.isAccepted = reader.GetBoolean(5);
+                        dethi.monHoc.ten = reader.GetString(7);
+                        arrayList.Add(dethi);
+
+
+                    }
+                }
+            }
+
+            return arrayList;
+        }
+
+        //method 8
+        //method 9
+       
+
+            //inserr bang cau hoi
+            [WebMethod]
         public bool insertdataCauHoi(string stt, string idDe, string noiDung)
         {
             bool result = false;
@@ -222,115 +335,6 @@ namespace TracNghiemService
             }
 
             return mon;
-        }
-
-        /**
-* ok
-*/
-        [WebMethod]
-        public List<Lop> getDSLop()
-        {
-            List<Lop> dslop = new List<Lop>();
-            using (MySqlConnection conn = ConnectionDB.getConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT * FROM Lop";
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Lop lop = new Lop();
-                        lop.setLop(reader.GetInt32("lop"));
-                        lop.setLabel(reader.GetString("label"));
-                        dslop.Add(lop);
-                    }
-                }
-            }
-
-            return dslop;
-        }
-
-        [WebMethod]
-        public Lop getLop(int solop)
-        {
-            Lop lop = null;
-            using (MySqlConnection conn = ConnectionDB.getConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT * FROM Lop where lop = " + solop;
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        lop = new Lop();
-                        lop.setLop(reader.GetInt32("lop"));
-                        lop.setLabel(reader.GetString("label"));
-                    }
-                }
-            }
-
-            return lop;
-        }
-
-        /**
-        * 
-        */
-        [WebMethod]
-        public List<Mon> getDSMon()
-        {
-            List<Mon> dsmon = new List<Mon>();
-            using (MySqlConnection conn = ConnectionDB.getConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = "SELECT * FROM monhoc";
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Mon mon = new Mon();
-                        mon.ten = reader.GetString("name");
-                        dsmon.Add(mon);
-                    }
-                }
-            }
-            return dsmon;
-        }
-
-
-        /**
-         * @return(lay de đã duyet theo mon va lop da chon)
-         */
-        [WebMethod]
-        public List<DeThi> getDeThi(string subject, int lop)
-        {
-            List<DeThi> arrayList = new List<DeThi>();
-            using (MySqlConnection conn = ConnectionDB.getConnection())
-            {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandText = "select * from de inner join monhoc on de.monHoc = monhoc.id where monhoc.name like '" + subject + "' and de.lop = " + lop + " and de.isAccepted = true";
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        DeThi dethi = new DeThi();
-                        dethi.id = reader.GetString(0);
-                        dethi.tieuDe = reader.GetString(1);
-                        dethi.lop.setLop(reader.GetInt32(2));
-                        dethi.noiDung = reader.GetString(4);
-                        dethi.isAccepted = reader.GetBoolean(5);
-                        dethi.monHoc.ten = reader.GetString(7);
-                        arrayList.Add(dethi);
-
-
-                    }
-                }
-            }
-
-            return arrayList;
-        }
+        }  
     }
 }
