@@ -51,8 +51,7 @@ namespace TracNghiemService
             else
                 return deThi;
         }
-        //ok-bỏ
-        [WebMethod]
+        //ok
         private List<CauTraLoi> getDSDapAnCuaMotCauHoi(string sttCauHoi, string idDe)
         {
             List<CauTraLoi> dscautraloi = new List<CauTraLoi>();
@@ -183,12 +182,63 @@ namespace TracNghiemService
             return dsmon;
         }
 
+        //lấy mã môn học
+
+        private string getIdSubject(string name)
+        {
+            //lay ma mon
+            String idSubject = "";
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM MONHOC where name like '" + name + "'";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        idSubject = reader.GetString("id");
+
+                    }
+                }
+            }
+            return idSubject;
+        }
+
+        ////tạo id cho đề
+
+        private int getIDExam()
+        {
+            int idExam = 0;
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT COUNT(*) AS sode FROM DE";
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        idExam = reader.GetInt32("sode");
+
+                    }
+
+
+                }
+            }
+
+            return idExam;
+        }
         //insert bảng đề _ 6
         [WebMethod]
-        public bool insertdataDeThi(string idDe, string tenDe, int lop, string maMonHoc, string noiDung, bool isAccept)
+        public string insertDeThi(string name, string subjectName, int lop, string mota, bool isAccepted)
         {
+
             bool result = false;
-            string query = "insert into de VALUES('" + idDe + "', '" + tenDe + "'," + lop + ", '" + maMonHoc + "', '" + noiDung + "'," + isAccept + ");";
+            string idExam = getIDExam() + 1 + "";
+            string query = "insert into de VALUES('" + idExam + "', '" + name + "'," + lop + ", '" + getIdSubject(subjectName) + "', '" + mota + "'," + isAccepted + ");";
             using (MySqlConnection conn = ConnectionDB.getConnection())
             {
                 MySqlCommand cmd = new MySqlCommand();
@@ -212,7 +262,9 @@ namespace TracNghiemService
                 }
 
             }
-            return result;
+            return result ? idExam : null;
+
+
         }
 
         /**
@@ -248,16 +300,36 @@ namespace TracNghiemService
             return arrayList;
         }
 
-        //method 8
-        //method 9
-       
+        /**
+         * @param idDe 
+         * @return
+         * method 8
+         */
+        [WebMethod]
+        public DeThi getExamInfor(string idDe)
+        {
+            // TODO implement here
+            return null;
+        }
 
-            //inserr bang cau hoi
-            [WebMethod]
-        public bool insertdataCauHoi(string stt, string idDe, string noiDung)
+        /**
+         * @param isAccepted 
+         * @param id
+         * method 9
+         */
+        [WebMethod]
+        public void processExam(bool isAccepted, string id)
+        {
+            // TODO implement here
+        }
+
+
+        //inserr bang cau hoi _10
+        [WebMethod]
+        public bool insertdataCauHoi(string stt, string noiDung)
         {
             bool result = false;
-            string query = "insert into cauhoi VALUES('" + stt + "', '" + idDe + "','" + noiDung + "');";
+            string query = "insert into cauhoi VALUES('" + stt + "', '" + getIDExam() + "','" + noiDung + "');";
             using (MySqlConnection conn = ConnectionDB.getConnection())
             {
                 MySqlCommand cmd = new MySqlCommand();
@@ -283,12 +355,12 @@ namespace TracNghiemService
             }
             return result;
         }
-        //insert bang dap an
+        //insert bang dap an_11
         [WebMethod]
-        public bool insertdataDapAn(string stt, string sttCauHoi, string idDe, string noiDung, bool isTrue)
+        public bool insertdataDapAn(string stt, string sttCauHoi, string noiDung, bool isTrue)
         {
             bool result = false;
-            string query = "insert into dapan VALUES('" + stt + "', '" + sttCauHoi + "','" + idDe + "','" + noiDung + "'," + isTrue + ");";
+            string query = "insert into dapan VALUES('" + stt + "', '" + sttCauHoi + "','" + getIDExam() + "','" + noiDung + "'," + isTrue + ");";
             using (MySqlConnection conn = ConnectionDB.getConnection())
             {
                 MySqlCommand cmd = new MySqlCommand();
@@ -335,6 +407,10 @@ namespace TracNghiemService
             }
 
             return mon;
-        }  
+        }
     }
 }
+
+
+
+
