@@ -408,6 +408,58 @@ namespace TracNghiemService
 
             return mon;
         }
+
+        //lay danh sach de theo trang thai _12
+        [WebMethod]
+        public List<DeThi> getDSDeThi(bool isAccept)
+        {
+            List<DeThi> dsmon = new List<DeThi>();
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM DE where isAccepted = " + isAccept ;
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DeThi deThi = new DeThi();
+                        deThi.id = reader.GetString("id");
+                        deThi.tieuDe = reader.GetString("name");
+                        deThi.noiDung = reader.GetString("moTa");
+                        deThi.lop = getLop(reader.GetInt32("lop"));
+                        dsmon.Add(deThi);
+                    }
+                }
+            }
+            return dsmon;
+        }
+
+        //insert bang dap an_13
+        [WebMethod]
+        public bool setStatus(string id)
+        {
+            bool result = false;
+            string query = "UPDATE de SET isAccepted = true WHERE id like '" +id+"';";
+            using (MySqlConnection conn = ConnectionDB.getConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = query;
+                try
+                {
+                    int resultaat = cmd.ExecuteNonQuery();
+                    result = true;
+                }
+                catch (Exception)
+                {
+                    result = false;
+                    throw;
+                }
+
+            }
+            return result;
+        }
     }
 }
 
