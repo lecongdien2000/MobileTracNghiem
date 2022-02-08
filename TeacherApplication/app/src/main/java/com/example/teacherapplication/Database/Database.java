@@ -138,43 +138,33 @@ public class Database {
                 @Override
                 protected Void doInBackground(Void... values) {
                     //INSERT DETHI INFOR
-                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_10);
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_6);
 
                     //Set parameters of web service method
-                    webServiceConnection.setProperty("idDe", dethi.id );
-                    webServiceConnection.setProperty("tenDe", dethi.tieuDe);
+                    webServiceConnection.setProperty("name", dethi.tieuDe );
+                    webServiceConnection.setProperty("subjectName", dethi.monHoc.ten );
                     webServiceConnection.setProperty("lop", dethi.lop.lop);
-                    String maMH = "";
-                    switch (dethi.monHoc.ten){
-                        case "Toán" : maMH = "mh01"; break;
-                        case "Lý" : maMH = "mh02"; break;
-                        case "Hóa" : maMH = "mh03"; break;
-                        case "Sinh" : maMH = "mh04"; break;
-                        case "Sử" : maMH = "mh05"; break;
-                    }
-                    webServiceConnection.setProperty("maMonHoc", maMH);
-                    webServiceConnection.setProperty("noiDung", dethi.noiDung );
                     webServiceConnection.setProperty("isAccept", dethi.isAccepted);
+                    webServiceConnection.setProperty("mota", dethi.noiDung );
+
 
                     SoapObject respone = webServiceConnection.getResponse();
                         // INSERT CAUHOI OF DETHI
                         for (int i = 0; i < dethi.dsTracNghiem.size(); i++) {
                             MotLuaChon mlc = (MotLuaChon) dethi.dsTracNghiem.get(i);
-                            webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_11);
+                            webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_10);
 
                             //set parameter
                             webServiceConnection.setProperty("stt", (i+1)+"");
-                            webServiceConnection.setProperty("idDe", dethi.id);
                             webServiceConnection.setProperty("noiDung", mlc.cauHoi);
 
                             respone = webServiceConnection.getResponse();
                                 // INSERT DAPAN OF CAU HOI
                                 for (int j = 0; j < mlc.dsTraLoi.size(); j++) {
                                     CauTraLoi ctl = mlc.dsTraLoi.get(j);
-                                    WebServiceConnection insertDapAnWS = new WebServiceConnection(MethodNamesTable.METHOD_12);
+                                    WebServiceConnection insertDapAnWS = new WebServiceConnection(MethodNamesTable.METHOD_11);
                                     insertDapAnWS.setProperty("stt", ctl.stt + "");
                                     insertDapAnWS.setProperty("sttCauHoi", (i + 1) + "");
-                                    insertDapAnWS.setProperty("idDe", dethi.id);
                                     insertDapAnWS.setProperty("noiDung", ctl.noiDung);
                                     insertDapAnWS.setProperty("isTrue", ctl.isDapAn);
 
