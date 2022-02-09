@@ -428,6 +428,7 @@ namespace TracNghiemService
                         deThi.tieuDe = reader.GetString("name");
                         deThi.noiDung = reader.GetString("moTa");
                         deThi.lop = getLop(reader.GetInt32("lop"));
+                        deThi.isAccepted = reader.GetBoolean("isAccepted");
                         dsmon.Add(deThi);
                     }
                 }

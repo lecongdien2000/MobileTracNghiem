@@ -6,6 +6,8 @@ import com.example.teacherapplication.Database.Database;
 import com.example.teacherapplication.Model.DeThi;
 import com.example.teacherapplication.Model.Lop;
 import com.example.teacherapplication.Model.Mon;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,6 +52,7 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
         arrLop.add("Lớp 12");
         initSpinner(arrLop);
         setOnListennerForSpinner();
+
     }
 
     // H
@@ -84,6 +87,8 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
         updateUI(monHocMacDinh, lopMacDinh);
+        Button btnToan = findViewById(R.id.trangchu_btnMonHocToan);
+        btnToan.setBackgroundColor(Color.rgb(3, 169, 244));
     }
 
     /**
@@ -91,9 +96,36 @@ public class TrangChuActivity extends AppCompatActivity implements View.OnClickL
      */
     public void setOnListennerForButton(View view) {
         Button btn = (Button)view;
+        setColorAllButton();
         setAttMonHocDachon(btn.getText().toString());
+        btn.setBackgroundColor(Color.rgb(3, 169, 244));
         updateUI(monHocDachon,lopDaChon);
     }
+
+    private void setColorAllButton(){
+        Button btnToan = findViewById(R.id.trangchu_btnMonHocToan);
+        btnToan.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnLy = findViewById(R.id.trangchu_btnMonHocLy);
+        btnLy.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnHoa = findViewById(R.id.trangchu_btnMonHocHoa);
+        btnHoa.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnSinh = findViewById(R.id.trangchu_btnMonHocSinh);
+        btnSinh.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnSu = findViewById(R.id.trangchu_btnMonHocSu);
+        btnSu.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnDia = findViewById(R.id.trangchu_btnMonHocDia);
+        btnDia.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnGDCD = findViewById(R.id.trangchu_btnMonHocGDCD);
+        btnGDCD.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnCN = findViewById(R.id.trangchu_btnMonHocCN);
+        btnCN.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnTin = findViewById(R.id.trangchu_btnMonHocTin);
+        btnTin.setBackgroundColor(Color.rgb(103, 239, 226));
+        Button btnAnh = findViewById(R.id.trangchu_btnMonHocAnh);
+        btnAnh.setBackgroundColor(Color.rgb(103, 239, 226));
+
+    }
+
 
     /**
      *
