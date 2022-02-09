@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="cam">#FF9800</color>
+    <color name="xanh">#192A59</color>
+    <color name="blue">#192A59</color>
+    <color name="blue2">#3F5AA6</color>
+    <color name="border_avatar">#EBEEF7</color>
+    <color name="xanh_menu">#03A9F4</color>
+    <color name="xanh_nhat">#67EFE2</color>
+
 </resources>

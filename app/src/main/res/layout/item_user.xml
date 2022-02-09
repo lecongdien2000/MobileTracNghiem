@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/accuser"
+                android:layout_marginLeft="20dp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_nameuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="25dp"
+                android:layout_toEndOf="@+id/image_accuser"
+                android:layout_toRightOf="@+id/image_accuser"
+                android:text="Kim Hồng"
+                android:textColor="@color/blue2"
+                android:textSize="16sp" />
+        </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/time"-->
+<!--            android:layout_toEndOf="@id/tv_nameuser"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="@color/blue2"-->
+<!--            android:text="2 ngày trước"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_toRightOf="@id/tv_nameuser" />-->
+    </RelativeLayout>
+</LinearLayout>

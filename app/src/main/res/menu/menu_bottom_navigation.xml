@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_notification" android:title="THÔNG BÁO" android:icon="@drawable/notification"></item>
+    <item android:id="@+id/menu_home" android:title="TRANG CHỦ" android:icon="@drawable/home"></item>
+    <item android:id="@+id/menu_account" android:title="TÀI KHOẢN" android:icon="@drawable/user"></item>
+</menu>

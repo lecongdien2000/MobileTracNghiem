@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TracNghiemTest"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity">
-            <intent-filter>
+        <activity android:name=".View.DuyetDeThiActivity"></activity>
+        <activity android:name=".View.NotificationActivity"></activity>
+        <activity android:name=".View.AccountActivity"></activity>
+
+        <activity android:name=".View.TrangChuActivity">
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
