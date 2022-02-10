@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TrangChuActivity extends AppCompatActivity {
     Button btnDuyet;
+    Button btnDeDaDuyet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,15 @@ public class TrangChuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(TrangChuActivity.this, DuyetDeThiActivity.class);
                 startActivity(intent);
+            }
+        });
+        btnDeDaDuyet = findViewById(R.id.btnDeDaDuyet);
+        btnDeDaDuyet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TrangChuActivity.this, DeDaDuyetActivity.class);
+                startActivity(intent);
+
             }
         });
     }

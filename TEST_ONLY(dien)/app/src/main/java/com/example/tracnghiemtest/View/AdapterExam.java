@@ -32,6 +32,7 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
 
     }
 
+
     @Override
     public int getCount() {
         return deThiList.size();
@@ -89,7 +90,7 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
 //                Toast.makeText(this, "Đăng thành công", Toast.LENGTH_SHORT).show();
                 updateStatus(position);
                 Toast.makeText(activity.getApplicationContext(), "Đã duyệt ", Toast.LENGTH_SHORT).show();
-                deleteItem(position);
+                //deleteItem(position);
             }
         });
 
@@ -134,6 +135,10 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
         });
        builder.show();
 
+    }
+
+    public void setLayout(int layout){
+        this.layout = layout;
     }
    
 }

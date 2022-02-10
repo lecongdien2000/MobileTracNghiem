@@ -115,6 +115,7 @@
                         android:textSize="20dp" />
 
                     <Button
+                        android:id="@+id/btnDeDaDuyet"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"

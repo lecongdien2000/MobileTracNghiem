@@ -126,8 +126,8 @@ public class Database {
 //                    SoapObject responseElement = (SoapObject) response.getProperty(0);
 
                     // get Dethis from respone
-                    boolean result = Boolean.parseBoolean(response.getPrimitiveProperty("boolean").toString());
-                    return result;
+                    //boolean result = Boolean.parseBoolean(response.getProperty("boolean").toString());
+                    return true;
                 }
 
             };
@@ -139,4 +139,5 @@ public class Database {
         return false;
 
     }
+
 }
