@@ -52,8 +52,8 @@
             android:id="@+id/btnhuy"
             android:text="Huỷ"
             android:textSize="12dp"
-            android:layout_marginLeft="180dp"
-            android:backgroundTint="@color/xanh_nhat"
+            android:layout_marginLeft="185dp"
+            android:backgroundTint="#9E9E9F"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
