@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -36,7 +37,17 @@ public class DeDaDuyetActivity extends AppCompatActivity {
         listDeThi = Database.getDSDeThi(true);
         adapterExam = new DDAdapterExam(this, 0, listDeThi);
         listView = findViewById(R.id.list_dethiDD);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Bundle bd = new Bundle();
+                bd.putString("ID DE", listDeThi.get(i).id);
+                ActivitiesTransfer.sendMessage(DeDaDuyetActivity.this, LDThongtinActivity.class, bd);
+            }
+        });
         listView.setAdapter(adapterExam);
+
+
 
     }
 

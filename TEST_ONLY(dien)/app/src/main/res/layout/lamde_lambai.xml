@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:textStyle="bold"
+            android:textColor="#03A9F4"
+            android:id="@+id/articalTV"
+            android:text="Test name"
+            android:textSize="24dp">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/lamde_lambai_sentBtn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#00BCD4"
+            android:text="Nộp bài"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/white"
+            android:onClick="submit">
+
+        </Button>
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lamde_lambai_questionLV"
+        tools:listitem="@layout/row_cauhoi"
+        />
+
+</LinearLayout>

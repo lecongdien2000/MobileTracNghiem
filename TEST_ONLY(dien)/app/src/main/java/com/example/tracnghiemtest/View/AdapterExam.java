@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.tracnghiemtest.Database.Database;
 import com.example.tracnghiemtest.Model.DeThi;
 import com.example.tracnghiemtest.R;
 
@@ -122,6 +124,7 @@ public class AdapterExam extends ArrayAdapter<DeThi> {
         builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Log.d("dethi", Database.deleteDeThi(deThiList.get(position).id) + "");
                 deThiList.remove(position);
                 notifyDataSetChanged();
             }

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    android:layout_marginEnd="10dp"
+    tools:context=".View.LDThongtinActivity"
+    tools:ignore="RtlCompat">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Thông tin đề"
+            android:textColor="#009688"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="30dp">
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#158EC5"
+                android:text="Tiêu đề"/>
+            <TextView
+                android:id="@+id/lamde_thongtin_tieudeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:paddingTop="20dp"
+                android:layout_centerVertical="true"
+                android:text="Ôn tập lý 2018"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#158EC5"
+                android:text="Môn"/>
+            <TextView
+                android:id="@+id/lamde_thongtin_monTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:paddingTop="20dp"
+                android:layout_centerVertical="true"
+                android:text="Lý"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+            <TextView
+                android:id="@+id/tv3"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#158EC5"
+                android:text="Lớp"/>
+            <TextView
+                android:id="@+id/lamde_thongtin_lopTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:paddingTop="20dp"
+                android:layout_centerVertical="true"
+                android:text="10"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp">
+            <TextView
+                android:id="@+id/tv4"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="#158EC5"
+                android:text="Mô tả"/>
+            <TextView
+                android:id="@+id/lamde_thongtin_motaTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:paddingTop="20dp"
+                android:layout_centerVertical="true"
+                android:text="Đề ôn tập học kỳ 2 môn lý 2018"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="15dp"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/lamde_thongtin_backBtn"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button2"
+                android:textAllCaps="false"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="Trở về"
+                android:onClick="backToMain"/>
+            <Button
+                android:id="@+id/doExamBtn"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:background="@drawable/custom_button2"
+                android:layout_marginLeft="50dp"
+                android:text="Làm bài"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:onClick="doExam"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -14,6 +14,7 @@ public class MethodNamesTable {
     final static String METHOD_11 = "insertdataDapAn";
     final static String METHOD_12 = "getDSDeThi";
     final static String METHOD_13 = "setStatus";
+    final static String METHOD_14 = "deleteDeThi";
 
 
 

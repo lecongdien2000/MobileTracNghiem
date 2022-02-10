@@ -139,5 +139,63 @@ public class Database {
         return false;
 
     }
+    //Get only id, tieuDe, noiDung, lop and mon
+    public static DeThi getAPartExamInfor(String id) {
+        try {
+            AsyncTask<Void, Void, DeThi> async = new AsyncTask<Void, Void, DeThi>() {
+                @Override
+                protected DeThi doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_2);
+
+                    //Set parameters of web service method
+                    webServiceConnection.setProperty("id", id);
+
+                    //Determine mapping namespace (tag) and name in Java class
+                    webServiceConnection.setMapping("DeThi", new DeThi().getClass());
+                    webServiceConnection.setMapping("lop", new Lop().getClass());
+                    webServiceConnection.setMapping("monHoc", new Mon().getClass());
+                    //Start connect and get response
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    DeThi deThi = new DeThi();
+                    deThi.setProperty(0, response.getProperty("id"));
+                    deThi.setProperty(1, response.getProperty("tieuDe"));
+                    deThi.setProperty(2, response.getProperty("noiDung"));
+                    deThi.setProperty(4, response.getProperty("lop"));
+                    deThi.setProperty(5, response.getProperty(("monHoc")));
+                    deThi.setProperty(6, response.getProperty("isAccepted"));
+                    return deThi;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static Boolean deleteDeThi(String id) {
+        try {
+            AsyncTask<Void, Void, Boolean> async = new AsyncTask<Void, Void, Boolean>() {
+                @Override
+                protected Boolean doInBackground(Void... values) {
+                    //Create web service connection and pass a method in MethodNamesTable
+                    WebServiceConnection webServiceConnection = new WebServiceConnection(MethodNamesTable.METHOD_14);
+
+                    webServiceConnection.setProperty("id", id);
+
+                    SoapObject response = webServiceConnection.getResponse();
+
+                    return true;
+                }
+            };
+            async.execute();
+            return async.get();
+        } catch (ExecutionException|InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

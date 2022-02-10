@@ -6,7 +6,7 @@ import org.ksoap2.serialization.PropertyInfo;
 import java.util.Hashtable;
 
 public class Lop implements KvmSerializable {
-    int lop;
+    public int lop;
     String label;
 
     public Lop(){

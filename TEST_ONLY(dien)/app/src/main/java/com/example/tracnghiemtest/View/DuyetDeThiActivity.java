@@ -3,6 +3,7 @@ package com.example.tracnghiemtest.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -26,13 +27,6 @@ public class DuyetDeThiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_duyet_de_thi);
 
-//        listDeThi = new ArrayList<>();
-//        listDeThi.add(new DeThi("D01", "Đạo hàm1", "Tổng hợp các đề đạo hàm cơ bản", new Lop(12)));
-//        listDeThi.add(new DeThi("D02", "Đạo hàm2", "Tổng hợp các đề đạo hàm cơ bản", new Lop(12)));
-//        listDeThi.add(new DeThi("D03", "Đạo hàm3", "Tổng hợp các đề đạo hàm cơ bản", new Lop(12)));
-//        listDeThi.add(new DeThi("D04", "Đạo hàm4", "Tổng hợp các đề đạo hàm cơ bản", new Lop(12)));
-//        listDeThi.add(new DeThi("D05", "Đạo hàm5", "Tổng hợp các đề đạo hàm cơ bản", new Lop(12)));
-//       adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, listDeThi);
 
         imBack = findViewById(R.id.btnBack);
         imBack.setOnClickListener(new View.OnClickListener() {
@@ -56,5 +50,7 @@ public class DuyetDeThiActivity extends AppCompatActivity {
         listView.setAdapter(adapterExam);
         adapterExam.notifyDataSetChanged();
     }
+
+
 
 }
